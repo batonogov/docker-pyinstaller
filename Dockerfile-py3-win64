@@ -5,8 +5,8 @@ LABEL maintainer="f.batonogov@yandex.ru"
 ENV DEBIAN_FRONTEND noninteractive
 
 ARG WINE_VERSION=winehq-stable
-ARG PYTHON_VERSION=3.11.0
-ARG PYINSTALLER_VERSION=5.6.2
+ARG PYTHON_VERSION=3.11.1
+ARG PYINSTALLER_VERSION=5.7.0
 
 # we need wine for this all to work, so we'll use the PPA
 RUN set -x \

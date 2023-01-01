@@ -7,8 +7,8 @@ on:
 
 env:
   TEST_TAG: batonogov/pyinstaller-linux:test
-  TAG: batonogov/pyinstaller-linux:dev
-  FILE: Dockerfile-py3-amd64
+  LATEST_TAG: batonogov/pyinstaller-linux:dev
+  DOCKERFILE: Dockerfile-py3-amd64
 
 jobs:
   docker:
@@ -36,7 +36,7 @@ jobs:
           context: .
           load: true
           tags: ${{ env.TEST_TAG }}
-          file: ${{ env.FILE }}
+          file: ${{ env.DOCKERFILE }}
       -
         name: Test
         run: |
@@ -48,5 +48,5 @@ jobs:
           context: .
           platforms: linux/amd64
           push: true
-          tags: ${{ env.TAG }}
-          file: ${{ env.FILE }}
+          tags: ${{ env.LATEST_TAG }}
+          file: ${{ env.DOCKERFILE }}
