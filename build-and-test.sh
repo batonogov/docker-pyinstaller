@@ -1,6 +1,9 @@
 #!/bin/bash
 
-docker build -f $1 -t test . && \
-echo "print('hello world')" > test.py && \
-docker run -v "$(pwd):/src/" test "pyinstaller test.py" && \
-rm test.py
+if [ -z $1 ];
+then
+    echo "Enter dockerfile name"
+else
+    docker build -f $1 -t test_image . && \
+    docker run -v "$(pwd)/test:/src/" test_image "pyinstaller test/main.py"
+fi
