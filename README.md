@@ -67,16 +67,17 @@ None
 
 ## History
 
-<details>
- <summary>2023</summary>
+### 2023
+
+#### [3.0.1] - upcoming
+
+- New GitHub CI
 
 #### [3.0.0] - 01.01.2023
 
 - Semver now
 - Updated Pyintaller 5.5.0 -> 5.7.0
 - Updated Python 3.10.8 -> 3.11.1
-
-</details>
 
 <details>
   <summary>2022</summary>
