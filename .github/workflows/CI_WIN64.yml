@@ -1,4 +1,4 @@
-name: CI
+name: CI WIN64
 
 on:
   push:
@@ -8,8 +8,7 @@ on:
   #   branches: [ "master" ]
 
 env:
-  DOCKERFILE_LINUX: Dockerfile-py3-amd64
-  DOCKERFILE_WIN: Dockerfile-py3-win64
+  DOCKERFILE: Dockerfile-py3-win64
 
 jobs:
   build_and_push_to_registry:
@@ -26,13 +25,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
-        id: meta_linux
-        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
-        with:
-          images: batonogov/pyinstaller-linux
-
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta_win
+        id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
           images: batonogov/pyinstaller-windows
@@ -41,16 +34,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: ${{ env.DOCKERFILE_LINUX }}
+          file: ${{ env.DOCKERFILE }}
           push: true
-          tags: ${{ steps.meta_linux.outputs.tags }}
-          labels: ${{ steps.meta_linux.outputs.labels }}
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          file: ${{ env.DOCKERFILE_WIN }}
-          push: true
-          tags: ${{ steps.meta_win.outputs.tags }}
-          labels: ${{ steps.meta_win.outputs.labels }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
