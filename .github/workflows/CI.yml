@@ -42,7 +42,6 @@ jobs:
         with:
           context: .
           file: ${{ env.DOCKERFILE_LINUX }}
-          platforms: linux/amd64, linux/arm64
           push: true
           tags: ${{ steps.meta_linux.outputs.tags }}
           labels: ${{ steps.meta_linux.outputs.labels }}
