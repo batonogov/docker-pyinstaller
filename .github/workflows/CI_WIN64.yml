@@ -21,6 +21,7 @@ jobs:
           ./build-and-test.sh ${{ env.DOCKERFILE }}
 
   build_and_push_to_registry:
+    needs: test
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
