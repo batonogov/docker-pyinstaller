@@ -10,6 +10,7 @@ on:
 
 env:
   DOCKERFILE: Dockerfile-py3-windows
+  IMAGE_NAME: batonogov/pyinstaller-windows
 
 jobs:
   test:
@@ -40,7 +41,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
-          images: batonogov/pyinstaller-windows
+          images: ${{ env.IMAGE_NAME }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
@@ -50,7 +51,7 @@ jobs:
           push: true
           tags: |
             ${{ steps.meta.outputs.tags }} 
-            dev
+            ${{ env.IMAGE_NAME }}:dev
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Build and push Docker image (release)
@@ -65,5 +66,5 @@ jobs:
           push: true
           tags: |
             ${{ github.ref_name }}"
-            latest
+            ${{ env.IMAGE_NAME }}:latest
           labels: ${{ steps.meta.outputs.labels }}
