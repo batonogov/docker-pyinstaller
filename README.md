@@ -4,14 +4,13 @@
 
 Current PyInstaller version used:
 
-- 5.7.0 for Python 3.11.1
+- 5.7.0 for **Python 3.11.1**
 
 ## Tags
 
-`batonogov/pyinstaller-linux` both have few tags `:latest`, `:dev`.
-`batonogov/pyinstaller-windows` both have few tags `:latest`, `:dev`.
+`batonogov/pyinstaller-linux` or `batonogov/pyinstaller-windows` both have few tags `:latest`, `:dev`, `:3.0.1`.
 
-The `:latest` tag runs Python 3.11.1 x86-64.
+The `:latest` tag runs Python 3.11.1.
 
 ## Usage
 
@@ -37,7 +36,7 @@ docker run -v "$(pwd):/src/" batonogov/pyinstaller-linux
 
 will build your PyInstaller project into `dist/`. The binary will have the same name as your `.spec` file.
 
-##### How do I install system libraries or dependencies that my Python packages need?
+### How do I install system libraries or dependencies that my Python packages need?
 
 You'll need to supply a custom command to Docker to install system pacakges. Something like:
 
@@ -47,17 +46,17 @@ docker run -v "$(pwd):/src/" --entrypoint /bin/sh batonogov/pyinstaller-linux -c
 
 Replace `wget` with the dependencies / package(s) you need to install.
 
-##### How do I generate a .spec file?
+### How do I generate a .spec file?
 
 `docker run -v "$(pwd):/src/" batonogov/pyinstaller-linux "pyinstaller --onefile your-script.py"`
 
 will generate a `spec` file for `your-script.py` in your current working directory. See the PyInstaller docs for more information.
 
-##### How do I change the PyInstaller version used?
+### How do I change the PyInstaller version used?
 
 Add `pyinstaller=5.5.0` to your `requirements.txt`.
 
-##### Is it possible to use a package mirror?
+### Is it possible to use a package mirror?
 
 Yes, by supplying the `PYPI_URL` and `PYPI_INDEX_URL` environment variables that point to your PyPi mirror.
 
@@ -69,7 +68,7 @@ None
 
 ### 2023
 
-#### [3.0.1] - upcoming
+#### [3.0.1] - 24.01.2023
 
 - New GitHub CI
 - Added arm64 architecture in linux images
