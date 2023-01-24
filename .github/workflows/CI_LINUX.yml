@@ -10,7 +10,7 @@ on:
 
 env:
   DOCKERFILE: Dockerfile-py3-linux
-  IMAGE_NAME: batonogov/pyinstaller-windows
+  IMAGE_NAME: batonogov/pyinstaller-linux
 
 jobs:
   test:
