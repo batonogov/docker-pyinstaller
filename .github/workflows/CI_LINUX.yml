@@ -57,7 +57,8 @@ jobs:
             linux/arm64
           file: ${{ env.DOCKERFILE }}
           push: true
-          tags: ${{ steps.meta.outputs.tags }} 
+          tags: |
+            ${{ steps.meta.outputs.tags }} 
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Build and push Docker image (release)
