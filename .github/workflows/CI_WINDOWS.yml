@@ -5,6 +5,7 @@ on:
     branches:
       - '*'
       - '!main'
+      - '!windows_arm64'
     tags:        
       - '*'
 
@@ -51,7 +52,6 @@ jobs:
           push: true
           tags: |
             ${{ steps.meta.outputs.tags }} 
-            ${{ env.IMAGE_NAME }}:dev
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Build and push Docker image (release)
@@ -61,7 +61,6 @@ jobs:
           context: .
           platforms: |
             linux/amd64
-            linux/arm64
           file: ${{ env.DOCKERFILE }}
           push: true
           tags: |
