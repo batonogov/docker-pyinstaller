@@ -78,6 +78,7 @@ None
 #### [3.0.2] - upcoming
 
 - Updated Python 3.11.1 -> 3.11.2
+- Updated Ubuntu 20.04 -> 22.04 for windows
 
 #### [3.0.1] - 24.01.2023
 

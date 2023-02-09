@@ -37,15 +37,15 @@ RUN \
         xz-utils
 
 # install python
-RUN mkdir python && \
-    cd python && \
-    wget https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tar.xz && \
-    tar xf Python-${PYTHON_VERSION}.tar.xz && \
-    rm Python-${PYTHON_VERSION}.tar.xz && \
-    cd Python-${PYTHON_VERSION} && \
-    ./configure --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib" && \
-    make && \
-    make install
+RUN mkdir python \
+    && cd python \
+    && wget https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tar.xz \
+    && tar xf Python-${PYTHON_VERSION}.tar.xz \
+    && rm Python-${PYTHON_VERSION}.tar.xz \
+    && cd Python-${PYTHON_VERSION} \
+    && ./configure --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib" \
+    && make \
+    && make install
 
 # install pyinstaller
 RUN pip3 install pyinstaller==$PYINSTALLER_VERSION
