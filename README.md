@@ -4,7 +4,7 @@
 
 Current PyInstaller version used:
 
-- 5.7.0 for **Python 3.11.1**
+- 5.7.0 for **Python 3.11.2**
 
 ## Tags
 
@@ -13,6 +13,7 @@ Current PyInstaller version used:
 | TAG                   | Python version |
 | --------------------- | -------------- |
 | `:latest` or `:3.0.1` | 3.11.1         |
+| `:dev`                | 3.11.2         |
 | `:python-3.10`        | 3.10.9         |
 | `:python-3.9`         | 3.9.16         |
 | `:python-3.8`         | 3.8.16         |
@@ -73,6 +74,10 @@ None
 ## History
 
 ### 2023
+
+#### [3.0.2] - upcoming
+
+- Updated Python 3.11.1 -> 3.11.2
 
 #### [3.0.1] - 24.01.2023
 
