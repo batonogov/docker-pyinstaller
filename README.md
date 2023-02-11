@@ -79,6 +79,7 @@ None
 
 - Updated Python 3.11.1 -> 3.11.2
 - Updated Ubuntu 20.04 -> 22.04 for windows
+- Updated Pyintaller 5.7.0 -> 5.8.0
 
 #### [3.0.1] - 24.01.2023
 
