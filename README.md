@@ -10,14 +10,10 @@ Current PyInstaller version used:
 
 `batonogov/pyinstaller-linux` or `batonogov/pyinstaller-windows` both have few tags:
 
-| TAG                   | Python version |
-| --------------------- | -------------- |
-| `:latest` or `:3.0.1` | 3.11.1         |
-| `:dev`                | 3.11.2         |
-| `:python-3.10`        | 3.10.9         |
-| `:python-3.9`         | 3.9.16         |
-| `:python-3.8`         | 3.8.16         |
-| `:python-3.7`         | 3.7.16         |
+| TAG                   | Python version | Pyinstaller version |
+| --------------------- | -------------- | ------------------- |
+| `:latest` or `:3.0.1` | 3.11.1         | 5.7.0               |
+| `:python-3.10`        | 3.10.9         | 5.7.0               |
 
 ## Usage
 
