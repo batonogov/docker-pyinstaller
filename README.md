@@ -8,7 +8,8 @@
 
 | TAG                   | Python version | Pyinstaller version |
 | --------------------- | -------------- | ------------------- |
-| `:latest` or `:3.0.1` | 3.11.1         | 5.7.0               |
+| `:latest` or `:3.0.2` | 3.11.2         | 5.8.0               |
+| `:3.0.1`              | 3.11.1         | 5.7.0               |
 | `:python-3.10`        | 3.10.10        | 5.7.0               |
 | `:dev`                | See dev branch | See dev branch      |
 
