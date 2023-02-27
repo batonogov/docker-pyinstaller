@@ -55,7 +55,7 @@ will generate a `spec` file for `your-script.py` in your current working directo
 
 ### How do I change the PyInstaller version used?
 
-Add `pyinstaller=5.7.0` to your `requirements.txt`.
+Add `pyinstaller==5.7.0` to your `requirements.txt`.
 
 ### Is it possible to use a package mirror?
 
@@ -68,6 +68,10 @@ None
 ## History
 
 ### 2023
+
+### [3.1.0] - Upcoming
+
+- Update Dockerfile for Linux Image
 
 #### [3.0.2] - 13.02.2023
 
