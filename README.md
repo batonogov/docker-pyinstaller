@@ -11,7 +11,7 @@
 | `:latest` or `:3.0.2` | 3.11.2         | 5.8.0               |
 | `:3.0.1`              | 3.11.1         | 5.7.0               |
 | `:python-3.10`        | 3.10.10        | 5.7.0               |
-| `:dev`                | See dev branch | See dev branch      |
+| `:dev`                | 3.11.2         | 5.9.0               |
 
 ## Usage
 
@@ -69,9 +69,10 @@ None
 
 ### 2023
 
-### [3.1.0] - Upcoming
+### [3.0.3] - Upcoming
 
-- Update Dockerfile for Linux Image
+- Updated Dockerfile for Linux Image
+- Updated Pyintaller 5.8.0 -> 5.9.0
 
 #### [3.0.2] - 13.02.2023
 
