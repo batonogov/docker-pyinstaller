@@ -71,7 +71,7 @@ Yes, by supplying the `PYPI_URL` and `PYPI_INDEX_URL` environment variables that
 
 Now release information will be [here](https://github.com/batonogov/docker-pyinstaller/releases).
 
-### [3.1.0] - 08.03.2023
+### [3.1.0] - 08.04.2023
 
 - Linux container now uses Python base image
 - Updated Pyintaller 5.8.0 -> 5.9.0
