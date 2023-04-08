@@ -8,7 +8,8 @@
 
 | TAG                | Python version | Pyinstaller version |
 | ------------------ | -------------- | ------------------- |
-| `:latest`/`:3.0.2` | 3.11.2         | 5.8.0               |
+| `:latest`/`:3.1.0` | 3.11.3         | 5.9.0               |
+| `:3.0.2`           | 3.11.2         | 5.8.0               |
 | `:3.0.1`           | 3.11.1         | 5.7.0               |
 | `:python-3.10`     | 3.10.10        | 5.7.0               |
 
@@ -54,7 +55,7 @@ will generate a `spec` file for `your-script.py` in your current working directo
 
 ### How do I change the PyInstaller version used?
 
-Add `pyinstaller==5.7.0` to your `requirements.txt`.
+Add `pyinstaller==5.8.0` to your `requirements.txt`.
 
 ### Is it possible to use a package mirror?
 
@@ -68,7 +69,9 @@ Yes, by supplying the `PYPI_URL` and `PYPI_INDEX_URL` environment variables that
 
 ### 2023
 
-### [3.1.0] - Upcoming
+Now release information will be [here](https://github.com/batonogov/docker-pyinstaller/releases).
+
+### [3.1.0] - 08.03.2023
 
 - Linux container now uses Python base image
 - Updated Pyintaller 5.8.0 -> 5.9.0
