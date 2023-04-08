@@ -6,11 +6,11 @@
 
 `batonogov/pyinstaller-linux` or `batonogov/pyinstaller-windows` both have few tags:
 
-| TAG                   | Python version | Pyinstaller version |
-| --------------------- | -------------- | ------------------- |
-| `:latest` or `:3.0.2` | 3.11.2         | 5.8.0               |
-| `:3.0.1`              | 3.11.1         | 5.7.0               |
-| `:python-3.10`        | 3.10.10        | 5.7.0               |
+| TAG                | Python version | Pyinstaller version |
+| ------------------ | -------------- | ------------------- |
+| `:latest`/`:3.0.2` | 3.11.2         | 5.8.0               |
+| `:3.0.1`           | 3.11.1         | 5.7.0               |
+| `:python-3.10`     | 3.10.10        | 5.7.0               |
 
 ## Usage
 
@@ -62,7 +62,7 @@ Yes, by supplying the `PYPI_URL` and `PYPI_INDEX_URL` environment variables that
 
 ## Known Issues
 
-None
+[Outdated Microsoft C++ Build Tools](https://github.com/batonogov/docker-pyinstaller/issues/11)
 
 ## History
 
@@ -72,6 +72,7 @@ None
 
 - Linux container now uses Python base image
 - Updated Pyintaller 5.8.0 -> 5.9.0
+- Updated Python 3.11.2 -> 3.11.3
 
 #### [3.0.2] - 13.02.2023
 
