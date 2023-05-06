@@ -8,6 +8,7 @@
 
 | TAG                    | Python version | Pyinstaller version |
 | ---------------------- | -------------- | ------------------- |
+| `:3.1.1`               | 3.11.3         | 5.10.1              |
 | `:latest`/`:3.1.0`     | 3.11.3         | 5.9.0               |
 | `:python-3.11`/`:3.0.2`| 3.11.2         | 5.8.0               |
 | `:3.0.1`               | 3.11.1         | 5.7.0               |
@@ -67,9 +68,10 @@ Yes, by supplying the `PYPI_URL` and `PYPI_INDEX_URL` environment variables that
 
 ## History
 
-### 2023
-
 Now release information will be [here](https://github.com/batonogov/docker-pyinstaller/releases).
+
+<details>
+  <summary>2023</summary>
 
 ### [3.1.0] - 08.04.2023
 
@@ -93,6 +95,8 @@ Now release information will be [here](https://github.com/batonogov/docker-pyins
 - Semver now
 - Updated Pyintaller 5.5.0 -> 5.7.0
 - Updated Python 3.10.8 -> 3.11.1
+
+</details>
 
 <details>
   <summary>2022</summary>
