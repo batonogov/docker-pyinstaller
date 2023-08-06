@@ -246,6 +246,53 @@ First release, works.
 
 </details>
 
+## Setup pre-commit hook
+
+- Installation
+
+Before you can run **hooks**, you must install the **pre-commit** package manager.
+
+Using **pip**:
+
+```console
+pip install pre-commit==3.3.3
+```
+
+In the python project, add the following to the **requirements.txt** (or **requirements-dev.txt**) file:
+
+```text
+pre-commit==3.3.3.3
+```
+
+Using **homebrew**:
+
+```console
+brew install pre-commit
+```
+
+With **conda** (via **conda-forge**):
+
+```console
+conda install -c conda-forge pre-commit
+```
+
+- Quick Start
+
+Follow the installation instructions above.
+
+The **pre-commit --version** should show which version you are using.
+
+```console
+pre-commit --version
+pre-commit 3.3.3
+```
+
+Install **pre-commit**
+
+```console
+pre-commit install
+```
+
 ## License
 
 MIT
