@@ -8,7 +8,8 @@
 
 | TAG                    | Python version | Pyinstaller version |
 | ---------------------- | -------------- | ------------------- |
-| `:latest`/`:3.1.5`     | 3.11.5         | 5.13.1              |
+| `:latest`/`:3.1.6`     | 3.11.5         | 5.13.2              |
+| `:3.1.5`               | 3.11.5         | 5.13.1              |
 | `:3.1.4`               | 3.11.4         | 5.13.0              |
 | `:3.1.3`               | 3.11.4         | 5.12.0              |
 | `:3.1.1`               | 3.11.3         | 5.11.0              |
@@ -68,6 +69,7 @@ Yes, by supplying the `PYPI_URL` and `PYPI_INDEX_URL` environment variables that
 ## Known Issues
 
 [Outdated Microsoft C++ Build Tools](https://github.com/batonogov/docker-pyinstaller/issues/11)
+[ntdll.so Path Missing](https://github.com/batonogov/docker-pyinstaller/issues/23)
 
 ## History
 
