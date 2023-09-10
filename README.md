@@ -68,8 +68,9 @@ Yes, by supplying the `PYPI_URL` and `PYPI_INDEX_URL` environment variables that
 
 ## Known Issues
 
-[Outdated Microsoft C++ Build Tools](https://github.com/batonogov/docker-pyinstaller/issues/11)
-[ntdll.so Path Missing](https://github.com/batonogov/docker-pyinstaller/issues/23)
+1. [Outdated Microsoft C++ Build Tools](https://github.com/batonogov/docker-pyinstaller/issues/11)
+1. [ntdll.so Path Missing](https://github.com/batonogov/docker-pyinstaller/issues/23)
+1. [How to use it in Gitlab CI](https://github.com/batonogov/docker-pyinstaller/issues/30)
 
 ## History
 
