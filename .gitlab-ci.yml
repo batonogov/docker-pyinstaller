@@ -1,7 +1,39 @@
-executable:
+executable-1:
   stage: deploy
   image: batonogov/pyinstaller-linux:python-3.10
   script:
     - echo "running"
   rules:
     - when: always
+  allow_failure: false
+
+executable-2:
+  stage: deploy
+  image:
+    name: batonogov/pyinstaller-linux:python-3.10
+    entrypoint: [""]
+  script:
+    - /bin/sh -c /entrypoint.sh
+  rules:
+    - when: always
+  allow_failure: false
+
+executable-3:
+  stage: deploy
+  image: batonogov/pyinstaller-linux:gitlab_ci
+  script:
+    - echo "running"
+  rules:
+    - when: always
+  allow_failure: false
+
+executable-4:
+  stage: deploy
+  image:
+    name: batonogov/pyinstaller-linux:gitlab_ci
+    entrypoint: [""]
+  script:
+    - /bin/sh -c /entrypoint.sh
+  rules:
+    - when: always
+  allow_failure: false
