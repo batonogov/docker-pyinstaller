@@ -8,7 +8,7 @@
 
 | TAG                    | Python version | Pyinstaller version |
 | ---------------------- | -------------- | ------------------- |
-| `:latest`/`:3.2.0`     | 3.11.5         | 6.0.0               |
+| `:latest`/`:v3.2.0`    | 3.11.5         | 6.0.0               |
 | `:3.1.6`               | 3.11.5         | 5.13.2              |
 | `:3.1.5`               | 3.11.5         | 5.13.1              |
 | `:3.1.4`               | 3.11.4         | 5.13.0              |
@@ -61,7 +61,7 @@ will generate a `spec` file for `your-script.py` in your current working directo
 
 ### How do I change the PyInstaller version used?
 
-Add `pyinstaller==5.12.0` to your `requirements.txt`.
+Add `pyinstaller==5.13.2` to your `requirements.txt`.
 
 ### Is it possible to use a package mirror?
 
