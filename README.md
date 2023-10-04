@@ -8,6 +8,7 @@
 
 | TAG                      | Python version | Pyinstaller version |
 | ------------------------ | -------------- | ------------------- |
+| `:latest`/`:v3.3.0`      | 3.12.0         | 6.0.0               |
 | `:python-3.11`/`:v3.2.1` | 3.11.6         | 6.0.0               |
 | `:v3.2.0`                | 3.11.5         | 6.0.0               |
 | `:3.1.6`                 | 3.11.5         | 5.13.2              |
@@ -67,11 +68,6 @@ Add `pyinstaller==5.13.2` to your `requirements.txt`.
 ### Is it possible to use a package mirror?
 
 Yes, by supplying the `PYPI_URL` and `PYPI_INDEX_URL` environment variables that point to your PyPi mirror.
-
-## Known Issues
-
-[Outdated Microsoft C++ Build Tools](https://github.com/batonogov/docker-pyinstaller/issues/11)
-[ntdll.so Path Missing](https://github.com/batonogov/docker-pyinstaller/issues/23)
 
 ## History
 
