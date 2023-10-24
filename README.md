@@ -251,6 +251,10 @@ First release, works.
 
 </details>
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=batonogov/docker-pyinstaller&type=Date)](https://star-history.com/#batonogov/docker-pyinstaller&Date)
+
 ## License
 
 MIT
