@@ -43,6 +43,15 @@ docker run -v "$(pwd):/src/" batonogov/pyinstaller-linux
 ```
 
 will build your PyInstaller project into `dist/`. The binary will have the same name as your `.spec` file.
+### How do I specify the spec file from which the executable should be build?
+
+You'll need to pass an environment variable called `SPECFILE` with the path (relative or absoulte) to your spec file, like so:
+
+```console
+docker run -v "$(pwd):/src/" -e SPECFILE=./main-nogui.spec batonogov/pyinstaller-linux 
+```
+
+This will build the executable from the spec file `main-nogui.spec`.
 
 ### How do I install system libraries or dependencies that my Python packages need?
 
