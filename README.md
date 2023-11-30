@@ -8,6 +8,7 @@
 
 | TAG                      | Python version | Pyinstaller version |
 | ------------------------ | -------------- | ------------------- |
+| `:v3.3.0`                | 3.11.6         | 6.2.0               |
 | `:python-3.11`/`:v3.2.1` | 3.11.6         | 6.0.0               |
 | `:v3.2.0`                | 3.11.5         | 6.0.0               |
 | `:3.1.6`                 | 3.11.5         | 5.13.2              |
@@ -48,7 +49,7 @@ will build your PyInstaller project into `dist/`. The binary will have the same 
 You'll need to pass an environment variable called `SPECFILE` with the path (relative or absoulte) to your spec file, like so:
 
 ```console
-docker run -v "$(pwd):/src/" -e SPECFILE=./main-nogui.spec batonogov/pyinstaller-linux 
+docker run -v "$(pwd):/src/" -e SPECFILE=./main-nogui.spec batonogov/pyinstaller-linux
 ```
 
 This will build the executable from the spec file `main-nogui.spec`.
