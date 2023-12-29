@@ -14,7 +14,9 @@ USER root
 
 RUN pacman --noconfirm -Sy python-pipx
 
-RUN pipx ensurepath && pipx install pyinstaller==$PYINSTALLER_VERSION \
+RUN pipx ensurepath \
+    && pipx install pip \
+    && pipx install pyinstaller==$PYINSTALLER_VERSION \
     && chmod +x /entrypoint.sh
 
 VOLUME /src/
