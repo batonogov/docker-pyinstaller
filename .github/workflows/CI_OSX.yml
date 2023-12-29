@@ -1,4 +1,4 @@
-name: CI WINDOWS
+name: CI OSX
 
 on:
   push:
@@ -10,8 +10,8 @@ on:
 
 env:
   DOCKERHUB_USERNAME: mruskov
-  DOCKERFILE: Dockerfile-py3-windows
-  IMAGE_NAME: ${{ env.DOCKERHUB_USERNAME }}/pyinstaller-windows
+  DOCKERFILE: Dockerfile-py3-osx
+  IMAGE_NAME: ${{ env.DOCKERHUB_USERNAME }}/pyinstaller-osx
 
 jobs:
   test:
