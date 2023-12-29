@@ -11,7 +11,7 @@ on:
 env:
   DOCKERHUB_USERNAME: mruskov
   DOCKERFILE: Dockerfile-py3-linux
-  IMAGE_NAME: ${{ env.DOCKERHUB_USERNAME }}/pyinstaller-linux
+  IMAGE_NAME: ${{ DOCKERHUB_USERNAME }}/pyinstaller-linux
 
 jobs:
   test:
