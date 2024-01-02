@@ -1,6 +1,6 @@
 # PyInstaller Docker Images
 
-**batonogov/pyinstaller-linux**, **batonogov/pyinstaller-windows** and **batonogov/pyinstaller-osx**
+**batonogov/pyinstaller-linux**, **batonogov/pyinstaller-windows** and **batonogov/pyinstaller-osx (Experimental)**
 are a trio of Docker containers to ease compiling Python applications to binaries / exe files.
 
 ## Tags
