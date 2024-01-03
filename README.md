@@ -1,29 +1,34 @@
 # PyInstaller Docker Images
 
-**batonogov/pyinstaller-linux** and **batonogov/pyinstaller-windows** are a pair of Docker containers to ease compiling Python applications to binaries / exe files.
+**batonogov/pyinstaller-linux**, **batonogov/pyinstaller-windows** and **batonogov/pyinstaller-osx (Experimental)**
+are a trio of Docker containers to ease compiling Python applications to binaries / exe files.
 
 ## Tags
 
-`batonogov/pyinstaller-linux` or `batonogov/pyinstaller-windows` both have few tags:
+Images have few tags:
 
-| TAG                      | Python version | Pyinstaller version |
-| ------------------------ | -------------- | ------------------- |
-| `:latest`/`:v3.3.0`      | 3.12.0         | 6.0.0               |
-| `:python-3.11`/`:v3.2.1` | 3.11.6         | 6.0.0               |
-| `:v3.2.0`                | 3.11.5         | 6.0.0               |
-| `:3.1.6`                 | 3.11.5         | 5.13.2              |
-| `:3.1.5`                 | 3.11.5         | 5.13.1              |
-| `:3.1.4`                 | 3.11.4         | 5.13.0              |
-| `:3.1.3`                 | 3.11.4         | 5.12.0              |
-| `:3.1.1`                 | 3.11.3         | 5.11.0              |
-| `:3.1.0`                 | 3.11.3         | 5.9.0               |
-| `:3.0.2`                 | 3.11.2         | 5.8.0               |
-| `:3.0.1`                 | 3.11.1         | 5.7.0               |
-| `:python-3.10`           | 3.10.10        | 5.7.0               |
+| Image                                                                                       | TAG                      | Python  | Pyinstaller |
+| ------------------------------------------------------------------------------------------- | ------------------------ | ------- | ----------- |
+| `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`, `batonogov/pyinstaller-osx` | `:v4.0.0`                | 3.11.7  | 6.3.0       |
+| `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`                              | `:v3.3.1`                | 3.11.7  | 6.3.0       |
+| `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`                              | `:v3.3.0`                | 3.11.6  | 6.2.0       |
+| `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`                              | `:python-3.11`/`:v3.2.1` | 3.11.6  | 6.0.0       |
+| `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`                              | `:v3.2.0`                | 3.11.5  | 6.0.0       |
+| `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`                              | `:3.1.6`                 | 3.11.5  | 5.13.2      |
+| `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`                              | `:3.1.5`                 | 3.11.5  | 5.13.1      |
+| `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`                              | `:3.1.4`                 | 3.11.4  | 5.13.0      |
+| `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`                              | `:3.1.3`                 | 3.11.4  | 5.12.0      |
+| `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`                              | `:3.1.1`                 | 3.11.3  | 5.11.0      |
+| `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`                              | `:3.1.0`                 | 3.11.3  | 5.9.0       |
+| `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`                              | `:3.0.2`                 | 3.11.2  | 5.8.0       |
+| `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`                              | `:3.0.1`                 | 3.11.1  | 5.7.0       |
+| `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`                              | `:python-3.10`           | 3.10.10 | 5.7.0       |
 
 ## Usage
 
-There are two containers, one for Linux and one for Windows builds. The Windows builder runs Wine inside Ubuntu to emulate Windows in Docker.
+There are two containers, one for Linux and one for Windows and one forx osx builds.
+The Windows builder runs Wine inside Ubuntu to emulate Windows in Docker.
+The osx builder used sickcodes/docker-osx base image.
 
 To build your application, you need to mount your source code into the `/src/` volume.
 
@@ -44,6 +49,15 @@ docker run -v "$(pwd):/src/" batonogov/pyinstaller-linux
 ```
 
 will build your PyInstaller project into `dist/`. The binary will have the same name as your `.spec` file.
+### How do I specify the spec file from which the executable should be build?
+
+You'll need to pass an environment variable called `SPECFILE` with the path (relative or absoulte) to your spec file, like so:
+
+```console
+docker run -v "$(pwd):/src/" -e SPECFILE=./main-nogui.spec batonogov/pyinstaller-linux
+```
+
+This will build the executable from the spec file `main-nogui.spec`.
 
 ### How do I install system libraries or dependencies that my Python packages need?
 
@@ -246,6 +260,10 @@ Added Python 3.4 on Windows, thanks to @bmustiata
 First release, works.
 
 </details>
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=batonogov/docker-pyinstaller&type=Date)](https://star-history.com/#batonogov/docker-pyinstaller&Date)
 
 ## License
 
