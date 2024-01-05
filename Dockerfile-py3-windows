@@ -55,6 +55,8 @@ RUN set -x \
     && (pip install -U pip || true) \
     && rm -rf /tmp/.wine-*
 
+RUN pip --version
+
 ENV W_DRIVE_C=/wine/drive_c
 ENV W_WINDIR_UNIX="$W_DRIVE_C/windows"
 ENV W_SYSTEM64_DLLS="$W_WINDIR_UNIX/system32"
@@ -71,16 +73,16 @@ RUN set -x \
     && rename 's/_/\-/g' *.dll \
     && cp "$W_TMP"/*.dll "$W_SYSTEM64_DLLS"/
 
-# # install pyinstaller
-# RUN /usr/bin/pip install pyinstaller==$PYINSTALLER_VERSION
+# install pyinstaller
+RUN /usr/bin/pip install pyinstaller==$PYINSTALLER_VERSION
 
-# # put the src folder inside wine
-# RUN mkdir /src/ && ln -s /src /wine/drive_c/src
-# VOLUME /src/
-# WORKDIR /wine/drive_c/src/
-# RUN mkdir -p /wine/drive_c/tmp
+# put the src folder inside wine
+RUN mkdir /src/ && ln -s /src /wine/drive_c/src
+VOLUME /src/
+WORKDIR /wine/drive_c/src/
+RUN mkdir -p /wine/drive_c/tmp
 
-# COPY entrypoint-windows.sh /entrypoint.sh
-# RUN chmod +x /entrypoint.sh
+COPY entrypoint-windows.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-# ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
