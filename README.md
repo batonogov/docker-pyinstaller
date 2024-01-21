@@ -9,8 +9,9 @@ Images have few tags:
 
 | Image                                                                                       | TAG                      | Python  | Pyinstaller |
 | ------------------------------------------------------------------------------------------- | ------------------------ | ------- | ----------- |
-| `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`, `batonogov/pyinstaller-osx` | `:v4.0.0`                | 3.11.7  | 6.3.0       |
-| `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`                              | `:v3.3.1`                | 3.11.7  | 6.3.0       |
+| `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`, `batonogov/pyinstaller-osx` | `:v4.0.1`                | 3.11.7  | 6.3.0       |
+| `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`, `batonogov/pyinstaller-osx` | `:v4.0.0`                | 3.11.6  | 6.3.0       |
+| `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`                              | `:v3.3.1`                | 3.11.6  | 6.3.0       |
 | `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`                              | `:v3.3.0`                | 3.11.6  | 6.2.0       |
 | `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`                              | `:python-3.11`/`:v3.2.1` | 3.11.6  | 6.0.0       |
 | `batonogov/pyinstaller-linux`, `batonogov/pyinstaller-windows`                              | `:v3.2.0`                | 3.11.5  | 6.0.0       |
