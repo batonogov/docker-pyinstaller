@@ -1,0 +1,17 @@
+name: AURO PR
+
+on:
+  push:
+    branches:
+      - '*'
+      - '!main'
+
+jobs:
+  pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Auto Pull Request
+        uses: diillson/auto-pull-request@v1.0.1
+        with:
+          destination_branch: "main"
