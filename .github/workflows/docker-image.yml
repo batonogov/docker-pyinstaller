@@ -23,6 +23,14 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - dockerfile: Dockerfile-py3-linux
+            image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          - dockerfile: Dockerfile-py3-windows
+            image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
     permissions:
       contents: read
       packages: write
@@ -64,7 +72,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ matrix.image }}
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
@@ -73,7 +81,7 @@ jobs:
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
         with:
           context: .
-          file: Dockerfile-py3-linux
+          file: ${{ matrix.dockerfile }}
           platforms: |
             linux/amd64
             linux/arm64
