@@ -28,9 +28,9 @@ jobs:
       matrix:
         include:
           - dockerfile: Dockerfile-py3-linux
-            image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+            image: ghcr.io/batonogov/pyinstaller-linux
           - dockerfile: Dockerfile-py3-windows
-            image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+            image: ghcr.io/batonogov/pyinstaller-windows
     permissions:
       contents: read
       packages: write
