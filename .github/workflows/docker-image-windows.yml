@@ -1,4 +1,4 @@
-name: Docker Image CI Linux
+name: Docker Image CI Windows
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
