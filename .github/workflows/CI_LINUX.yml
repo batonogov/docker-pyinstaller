@@ -51,10 +51,13 @@ jobs:
         with:
           context: .
           platforms: |
-            linux/amd64
-            linux/arm64
-            linux/arm32
             linux/i386
+            linux/amd64
+            linux/arm/v5
+            linux/arm/v7
+            linux/arm64/v8
+            linux/ppc64le
+            linux/s390x
           file: ${{ env.DOCKERFILE }}
           push: true
           tags: |
@@ -67,10 +70,13 @@ jobs:
         with:
           context: .
           platforms: |
-            linux/amd64
-            linux/arm64
-            linux/arm32
             linux/i386
+            linux/amd64
+            linux/arm/v5
+            linux/arm/v7
+            linux/arm64/v8
+            linux/ppc64le
+            linux/s390x
           file: ${{ env.DOCKERFILE }}
           push: true
           tags: |
