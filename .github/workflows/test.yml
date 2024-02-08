@@ -7,7 +7,7 @@ on:
         - '!main'
 
 jobs:
-  test-windows:
+  windows:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -17,7 +17,7 @@ jobs:
           echo "Building image to test"
           ./build-and-test.sh Dockerfile-py3-windows
 
-  test-linux:
+  linux:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -27,7 +27,7 @@ jobs:
             echo "Building image to test"
             ./build-and-test.sh Dockerfile-py3-linux
 
-  test-osx:
+  osx:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
