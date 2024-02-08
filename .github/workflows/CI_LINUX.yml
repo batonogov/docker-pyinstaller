@@ -8,18 +8,7 @@ env:
   DOCKERFILE: Dockerfile-py3-linux
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v3
-      - name: Run Tests
-        run: |
-          echo "Building image to test"
-          ./build-and-test.sh ${{ env.DOCKERFILE }}
-
   build_and_push_to_registry:
-    needs: test
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:

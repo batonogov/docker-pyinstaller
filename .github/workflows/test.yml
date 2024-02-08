@@ -1,10 +1,6 @@
 name: tests
 
-on:
-    push:
-        branches:
-        - '*'
-        - '!main'
+on: [pull_request_target]
 
 jobs:
   windows:
