@@ -2,11 +2,7 @@ name: CI WINDOWS
 
 on:
   push:
-    branches:
-      - '*'
-      - '!main'
-    tags:
-      - '*'
+    tags: [ 'v*.*.*' ]
 
 env:
   DOCKERFILE: Dockerfile-py3-windows
