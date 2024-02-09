@@ -1,4 +1,4 @@
-name: CI LINUX
+name: CI LINUX SLIM
 
 on:
   push:
@@ -22,7 +22,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
-          images: ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux-slim
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -43,5 +43,5 @@ jobs:
           push: true
           tags: |
             ${{ github.ref_name }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux-slim:latest
           labels: ${{ steps.meta.outputs.labels }}
