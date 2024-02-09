@@ -3,6 +3,9 @@ name: ci linux slim
 on:
   push:
     tags: [ 'v*.*.*' ]
+    branches:
+      - '*'
+      - '!main'
 
 jobs:
   docker:
@@ -25,7 +28,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: Dockerfile-py3-linux-slim
+          file: ./Dockerfile-py3-linux-slim
           platforms: |
             linux/i386
             linux/amd64
