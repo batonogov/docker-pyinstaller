@@ -17,14 +17,26 @@ If the `src` folder has a `requirements.txt` file, the packages will be installe
 
 For example, in the folder that has your source code, `.spec` file and `requirements.txt`:
 
-```console
+```zsh
 docker run -v "$(pwd):/src/" batonogov/pyinstaller-windows
+```
+
+or
+
+```zsh
+docker run -v "$(pwd):/src/" ghcr.io/batonogov/pyinstaller-windows
 ```
 
 will build your PyInstaller project into `dist/`. The `.exe` file will have the same name as your `.spec` file.
 
-```console
+```zsh
 docker run -v "$(pwd):/src/" batonogov/pyinstaller-linux
+```
+
+or
+
+```zsh
+docker run -v "$(pwd):/src/" ghcr.io/batonogov/pyinstaller-linux
 ```
 
 will build your PyInstaller project into `dist/`. The binary will have the same name as your `.spec` file.
@@ -33,7 +45,7 @@ will build your PyInstaller project into `dist/`. The binary will have the same 
 
 You'll need to pass an environment variable called `SPECFILE` with the path (relative or absoulte) to your spec file, like so:
 
-```console
+```zsh
 docker run -v "$(pwd):/src/" -e SPECFILE=./main-nogui.spec batonogov/pyinstaller-linux
 ```
 
@@ -43,7 +55,7 @@ This will build the executable from the spec file `main-nogui.spec`.
 
 You'll need to supply a custom command to Docker to install system pacakges. Something like:
 
-```console
+```zsh
 docker run -v "$(pwd):/src/" --entrypoint /bin/sh batonogov/pyinstaller-linux -c "apt update -y && apt install -y wget && /entrypoint.sh"
 ```
 
