@@ -3,9 +3,6 @@ name: ci linux
 on:
   push:
     tags: [ 'v*.*.*' ]
-    branches:
-      - '*'
-      - '!main'
 
 jobs:
   docker:

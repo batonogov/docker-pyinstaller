@@ -3,9 +3,6 @@ name: ci linux slim
 on:
   push:
     tags: [ 'v*.*.*' ]
-    branches:
-      - '*'
-      - '!main'
 
 jobs:
   docker:

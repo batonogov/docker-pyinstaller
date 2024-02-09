@@ -3,9 +3,6 @@ name: ci osx
 on:
   push:
     tags: [ 'v*.*.*' ]
-    branches:
-      - '*'
-      - '!main'
 
 jobs:
   docker:
