@@ -27,6 +27,15 @@ jobs:
             echo "Building image to test"
             ./build-and-test.sh Dockerfile-py3-linux
 
+  linux-slim:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Run Tests
+        run: |
+            echo "Building image to test"
+            ./build-and-test.sh Dockerfile-py3-linux-slim
   osx:
     runs-on: ubuntu-latest
     steps:
