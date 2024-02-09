@@ -13,6 +13,7 @@ COPY entrypoint-linux.sh /entrypoint.sh
 RUN apt update \
     && apt install -y \
         binutils \
+        gcc \
     && rm -rf /var/lib/apt/lists/* \
     && pip3 install \
         pyinstaller==$PYINSTALLER_VERSION \
