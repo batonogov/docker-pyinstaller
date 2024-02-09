@@ -259,6 +259,12 @@ First release, works.
 
 </details>
 
+## Contributors
+
+<a href="https://github.com/remarkablemark/html-react-parser/graphs/contributors">
+  <img src="https://opencollective.com/html-react-parser/contributors.svg?width=890&button=false">
+</a>
+
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=batonogov/docker-pyinstaller&type=Date)](https://star-history.com/#batonogov/docker-pyinstaller&Date)
