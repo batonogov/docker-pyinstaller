@@ -24,23 +24,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v5
         with:
-          file: ./Dockerfile-py3-linux
-          platforms: |
-            linux/i386
-            linux/amd64
-            linux/arm/v5
-            linux/arm/v7
-            linux/arm64/v8
-            linux/ppc64le
-            linux/s390x
-          push: true
-          tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux:${{ github.ref_name }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux:latest
-      -
-        name: Build and push
-        uses: docker/build-push-action@v5
-        with:
           file: ./Dockerfile-py3-linux-slim
           platforms: |
             linux/i386
@@ -54,3 +37,21 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux:${{ github.ref_name }}-slim
             ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux:latest-slim
+
+      -
+        name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          file: ./Dockerfile-py3-linux
+          platforms: |
+            linux/i386
+            linux/amd64
+            linux/arm/v5
+            linux/arm/v7
+            linux/arm64/v8
+            linux/ppc64le
+            linux/s390x
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux:${{ github.ref_name }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux:latest
