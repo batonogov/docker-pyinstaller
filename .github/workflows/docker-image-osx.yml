@@ -1,4 +1,4 @@
-name: ci osx
+name: Docker Image CI OSX docker.io
 
 on:
   push:
