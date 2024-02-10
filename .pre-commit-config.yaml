@@ -1,7 +1,7 @@
 ---
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.5.0
     hooks:
     -   id: check-yaml
     -   id: end-of-file-fixer
@@ -17,11 +17,11 @@ repos:
     -   id: detect-private-key
 
   - repo: https://github.com/psf/black
-    rev: 23.7.0
+    rev: 24.1.1
     hooks:
       - id: black
 
   - repo: https://github.com/PyCQA/autoflake
-    rev: v2.2.0
+    rev: v2.2.1
     hooks:
       - id: autoflake
