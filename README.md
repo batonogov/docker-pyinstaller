@@ -1,13 +1,29 @@
 # PyInstaller Docker Images
 
 **batonogov/pyinstaller-linux**, **batonogov/pyinstaller-windows** and **batonogov/pyinstaller-osx (Experimental)**
-are a trio of Docker containers to ease compiling Python applications to binaries / exe files.
+are a trio of Docker/Podman containers to ease compiling Python applications to binaries / exe files.
+
+## Container registry
+
+Images available on multiple container registry:
+
+- [hub.docker.com](https://hub.docker.com/)
+
+  - `batonogov/pyinstaller-windows` / `docker.io/batonogov/pyinstaller-windows`
+  - `batonogov/pyinstaller-linux` / `docker.io/batonogov/pyinstaller-linux`
+  - `batonogov/pyinstaller-osx` / `docker.io/batonogov/pyinstaller-osx`
+
+- [ghcr.io](https://github.com/batonogov?tab=packages&repo_name=docker-pyinstaller)
+
+  - `ghcr.io/batonogov/pyinstaller-windows`
+  - `ghcr.io/batonogov/pyinstaller-linux`
+  - `ghcr.io/batonogov/pyinstaller-osx`
 
 ## Usage
 
-There are two containers, one for `Linux` and one for `Windows` and one for `osx` builds.
-The Windows builder runs Wine inside Ubuntu to emulate Windows in Docker.
-The osx builder used sickcodes/docker-osx base image.
+There are three containers, one for `Linux` and one for `Windows` and one for `osx` builds.
+The Windows builder runs `Wine` inside Ubuntu to emulate Windows in Docker.
+The osx builder used `sickcodes/docker-osx` base image.
 
 To build your application, you need to mount your source code into the `/src/` volume.
 
@@ -17,26 +33,18 @@ If the `src` folder has a `requirements.txt` file, the packages will be installe
 
 For example, in the folder that has your source code, `.spec` file and `requirements.txt`:
 
-```zsh
-docker run -v "$(pwd):/src/" batonogov/pyinstaller-windows
-```
-
-or
-
-```zsh
-docker run -v "$(pwd):/src/" ghcr.io/batonogov/pyinstaller-windows
+```sh
+docker run \
+  --volume "$(pwd):/src/" \
+  batonogov/pyinstaller-windows:latest
 ```
 
 will build your PyInstaller project into `dist/`. The `.exe` file will have the same name as your `.spec` file.
 
-```zsh
-docker run -v "$(pwd):/src/" batonogov/pyinstaller-linux
-```
-
-or
-
-```zsh
-docker run -v "$(pwd):/src/" ghcr.io/batonogov/pyinstaller-linux
+```sh
+docker run \
+  --volume "$(pwd):/src/" \
+  batonogov/pyinstaller-linux:latest
 ```
 
 will build your PyInstaller project into `dist/`. The binary will have the same name as your `.spec` file.
@@ -45,8 +53,11 @@ will build your PyInstaller project into `dist/`. The binary will have the same 
 
 You'll need to pass an environment variable called `SPECFILE` with the path (relative or absoulte) to your spec file, like so:
 
-```zsh
-docker run -v "$(pwd):/src/" -e SPECFILE=./main-nogui.spec batonogov/pyinstaller-linux
+```sh
+docker run \
+  --volume "$(pwd):/src/" \
+  --env SPECFILE=./main-nogui.spec \
+  batonogov/pyinstaller-linux
 ```
 
 This will build the executable from the spec file `main-nogui.spec`.
@@ -55,21 +66,29 @@ This will build the executable from the spec file `main-nogui.spec`.
 
 You'll need to supply a custom command to Docker to install system pacakges. Something like:
 
-```zsh
-docker run -v "$(pwd):/src/" --entrypoint /bin/sh batonogov/pyinstaller-linux -c "apt update -y && apt install -y wget && /entrypoint.sh"
+```sh
+docker run \
+  --volume "$(pwd):/src/" \
+  --entrypoint /bin/sh batonogov/pyinstaller-linux \
+  -c "apt update -y && apt install -y wget && /entrypoint.sh"
 ```
 
 Replace `wget` with the dependencies / package(s) you need to install.
 
 ### How do I generate a .spec file?
 
-`docker run -v "$(pwd):/src/" batonogov/pyinstaller-linux "pyinstaller --onefile your-script.py"`
+```sh
+docker run \
+  --volume "$(pwd):/src/" \
+  batonogov/pyinstaller-linux:latest \
+  "pyinstaller --onefile your-script.py"
+```
 
 will generate a `spec` file for `your-script.py` in your current working directory. See the PyInstaller docs for more information.
 
 ### How do I change the PyInstaller version used?
 
-Add `pyinstaller==6.2.0` to your `requirements.txt`.
+Add `pyinstaller==6.3.0` to your `requirements.txt`.
 
 ### Is it possible to use a package mirror?
 
