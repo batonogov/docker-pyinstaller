@@ -8,6 +8,9 @@ name: Docker Image CI Linux
 on:
   push:
     tags: [ 'v*.*.*' ]
+    branches:
+      - '*'
+      - '!main'
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -80,6 +83,26 @@ jobs:
             linux/s390x
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build and push slim Docker image
+        id: build-slim-and-push
+        uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
+        with:
+          context: .
+          file: Dockerfile-py3-linux-slim
+          platforms: |
+            linux/amd64
+            linux/arm64
+            linux/arm/v5
+            linux/arm/v7
+            linux/arm64/v8
+            linux/ppc64le
+            linux/s390x
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}-slim
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
