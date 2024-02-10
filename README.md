@@ -19,6 +19,8 @@ Images available on multiple container registry:
   - `ghcr.io/batonogov/pyinstaller-linux`
   - `ghcr.io/batonogov/pyinstaller-osx`
 
+For linux images have slim version.
+
 ## Usage
 
 There are three containers, one for `Linux` and one for `Windows` and one for `osx` builds.
