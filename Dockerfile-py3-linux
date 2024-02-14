@@ -18,4 +18,5 @@ RUN pip3 install \
 VOLUME /src/
 WORKDIR /src/
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/bin/sh"]
+CMD ["/entrypoint.sh"]
