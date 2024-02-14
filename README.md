@@ -98,7 +98,6 @@ Yes, by supplying the `PYPI_URL` and `PYPI_INDEX_URL` environment variables that
 
 ## Known Issues
 
-[shutil.copy2() broken in Python 3.12 for Windows](https://github.com/batonogov/docker-pyinstaller/issues/50)
 [ntdll.so Path Missing](https://github.com/batonogov/docker-pyinstaller/issues/23)
 [Outdated Microsoft C++ Build Tools](https://github.com/batonogov/docker-pyinstaller/issues/11)
 
