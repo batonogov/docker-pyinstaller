@@ -1,0 +1,10 @@
+windows_bin:
+  stage: deploy
+  image: ghcr.io/batonogov/pyinstaller-windows:gitlab_ci
+  script:
+    - cd ./test
+    - echo "Creating Windows artifact"
+    - pyinstaller --onedir main.py
+  rules:
+    - when: always
+  allow_failure: false
