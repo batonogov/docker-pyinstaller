@@ -2,7 +2,10 @@ name: Docker Image CI OSX docker.io
 
 on:
   push:
-    tags: [ 'v*.*.*' ]
+    tags: 
+      - "v*.*.*"
+    branches:
+      - "main"
 
 jobs:
   docker:

@@ -7,7 +7,10 @@ name: Docker Image CI Linux ghcr.io
 
 on:
   push:
-    tags: [ 'v*.*.*' ]
+    tags: 
+      - "v*.*.*"
+    branches:
+      - "main"
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -80,9 +83,7 @@ jobs:
             linux/ppc64le
             linux/s390x
           push: ${{ github.event_name != 'pull_request' }}
-          tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}-slim
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest-slim
+          tags: ${{ steps.meta.outputs.tags }}-slim
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -102,9 +103,7 @@ jobs:
             linux/ppc64le
             linux/s390x
           push: ${{ github.event_name != 'pull_request' }}
-          tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max

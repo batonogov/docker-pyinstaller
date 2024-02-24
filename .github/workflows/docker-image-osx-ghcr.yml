@@ -7,7 +7,10 @@ name: Docker Image CI OSX ghcr.io
 
 on:
   push:
-    tags: [ 'v*.*.*' ]
+    tags: 
+      - "v*.*.*"
+    branches:
+      - "main"
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -73,9 +76,7 @@ jobs:
           platforms: |
             linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
-          tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
