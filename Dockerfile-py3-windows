@@ -12,13 +12,24 @@ ARG PYINSTALLER_VERSION=6.5.0
 RUN set -x \
     && dpkg --add-architecture i386 \
     && apt update -qy \
-    && apt install --no-install-recommends -qfy apt-transport-https software-properties-common wget gpg-agent rename \
+    && apt install --no-install-recommends -qfy \
+        apt-transport-https \
+        software-properties-common \
+        wget \
+        gpg-agent \
+        rename \
     && wget -nv https://dl.winehq.org/wine-builds/winehq.key \
     && apt-key add winehq.key \
     && add-apt-repository 'https://dl.winehq.org/wine-builds/ubuntu/' \
     && apt update -qy \
-    && apt install --no-install-recommends -qfy $WINE_VERSION winbind cabextract \
-    && rm -rf /var/lib/apt/lists/* \
+    && apt install --no-install-recommends -qfy \
+        $WINE_VERSION \
+        winbind  \
+        cabextract \
+    && apt clean \
+    && rm -rf \
+        /var/lib/apt/lists/* \
+        /var/cache/* \
     && wget -nv https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks \
     && chmod +x winetricks \
     && mv winetricks /usr/local/bin
