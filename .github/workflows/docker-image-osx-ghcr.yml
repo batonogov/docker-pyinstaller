@@ -7,7 +7,7 @@ name: Docker Image CI OSX ghcr.io
 
 on:
   push:
-    tags: 
+    tags:
       - "v*.*.*"
     branches:
       - "main"

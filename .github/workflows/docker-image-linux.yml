@@ -2,7 +2,7 @@ name: Docker Image CI Linux docker.io
 
 on:
   push:
-    tags: 
+    tags:
       - "v*.*.*"
     branches:
       - "main"
