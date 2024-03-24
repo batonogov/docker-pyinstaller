@@ -10,6 +10,6 @@ windows_bin:
     - when: always
   artifacts:
     paths:
-      - ./dist/*.exe
+      - ./test/build/main/*.exe
     when: always
     expire_in: 2 week
