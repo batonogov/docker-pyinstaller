@@ -6,10 +6,11 @@ windows_bin:
   script:
     - echo "Creating Windows artifact"
     - cd ./test && pyinstaller --onedir main.py
+    - cp ./test/build/main/*.exe .
   rules:
     - when: always
   artifacts:
     paths:
-      - ./test/build/main/*.exe
+      - '*.exe'
     when: always
     expire_in: 2 week

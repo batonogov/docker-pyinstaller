@@ -22,5 +22,4 @@ RUN pipx ensurepath \
 VOLUME /src/
 WORKDIR /src/
 
-ENTRYPOINT ["/bin/sh"]
-CMD ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]

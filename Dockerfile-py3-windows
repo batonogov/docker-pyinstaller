@@ -94,5 +94,4 @@ RUN mkdir -p /wine/drive_c/tmp
 COPY entrypoint-windows.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-ENTRYPOINT ["/bin/sh"]
-CMD ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
