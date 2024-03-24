@@ -6,12 +6,12 @@ windows_bin:
   script:
     - echo "Creating Windows artifact"
     - cd ./test && pyinstaller --onedir main.py
-    - cp ./build/main/*.exe ../build/
+    - cp ./build/main/*.exe ../
   rules:
     - when: always
   artifacts:
     paths:
-      - ./build/*.exe
+      - '*.exe'
     when: always
     expire_in: 2 week
 
@@ -23,12 +23,11 @@ linux_bin:
   script:
     - echo "Creating Linux artifact"
     - cd ./test && pyinstaller --onedir main.py
-    - cp ./build/main/* ../build/
   rules:
     - when: always
   artifacts:
     paths:
-      - ./build/*
+      - ./test/build/main/*
     when: always
     expire_in: 2 week
 
@@ -40,12 +39,11 @@ linux_slim_bin:
   script:
     - echo "Creating Linux artifact"
     - cd ./test && pyinstaller --onedir main.py
-    - cp ./build/main/* ../build/
   rules:
     - when: always
   artifacts:
     paths:
-      - ./build/*
+      - ./test/build/main/*
     when: always
     expire_in: 2 week
 
@@ -57,11 +55,10 @@ osx_bin:
   script:
     - echo "Creating OSX artifact"
     - cd ./test && pyinstaller --onedir main.py
-    - cp ./build/main/* ../build/
   rules:
     - when: always
   artifacts:
     paths:
-      - ./build/*
+      - ./test/build/main/*
     when: always
     expire_in: 2 week
