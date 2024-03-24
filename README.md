@@ -98,6 +98,8 @@ Yes, by supplying the `PYPI_URL` and `PYPI_INDEX_URL` environment variables that
 
 ### How do I use image in GitLab CI?
 
+See [example](.gitlab-ci.yml) for GitLab CI.
+
 ```gitlab_ci
 windows_bin:
   stage: deploy
