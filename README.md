@@ -90,15 +90,38 @@ will generate a `spec` file for `your-script.py` in your current working directo
 
 ### How do I change the PyInstaller version used?
 
-Add `pyinstaller==6.3.0` to your `requirements.txt`.
+Add `pyinstaller==6.4.0` to your `requirements.txt`.
 
 ### Is it possible to use a package mirror?
 
 Yes, by supplying the `PYPI_URL` and `PYPI_INDEX_URL` environment variables that point to your PyPi mirror.
 
+### How do I use image in GitLab CI?
+
+```gitlab_ci
+windows_bin:
+  stage: deploy
+  image:
+    name: batonogov/pyinstaller-windows:latest
+    entrypoint: ['']
+  script:
+    - echo "Creating Windows artifact"
+    - pip install -r ./test/requirements.txt
+    - cd ./test && pyinstaller --onedir main.py
+    - cp ./build/main/*.exe ../
+  rules:
+    - when: always
+  artifacts:
+    paths:
+      - '*.exe'
+    when: always
+    expire_in: 2 week
+```
+
 ## Known Issues
 
 [ntdll.so Path Missing](https://github.com/batonogov/docker-pyinstaller/issues/23)
+
 [Outdated Microsoft C++ Build Tools](https://github.com/batonogov/docker-pyinstaller/issues/11)
 
 ## History
