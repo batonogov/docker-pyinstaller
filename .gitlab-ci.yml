@@ -49,20 +49,3 @@ linux_slim_bin:
       - ./test/build/main/*
     when: always
     expire_in: 2 week
-
-osx_bin:
-  stage: deploy
-  image:
-    name: batonogov/pyinstaller-osx:latest
-    entrypoint: ['']
-  script:
-    - echo "Creating OSX artifact"
-    - pip install -r ./test/requirements.txt
-    - cd ./test && pyinstaller --onedir main.py
-  rules:
-    - when: always
-  artifacts:
-    paths:
-      - ./test/build/main/*
-    when: always
-    expire_in: 2 week
