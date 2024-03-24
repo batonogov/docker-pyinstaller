@@ -6,8 +6,8 @@ windows_bin:
   script:
     - echo "Creating Windows artifact"
     - pip install -r ./test/requirements.txt
-    - cd ./test && pyinstaller --onedir main.py
-    - cp ./build/main/*.exe ../
+    - cd ./test && pyinstaller --onefile main.py
+    - cp ./build/*.exe ../
   rules:
     - when: always
   artifacts:
@@ -24,12 +24,12 @@ linux_bin:
   script:
     - echo "Creating Linux artifact"
     - pip install -r ./test/requirements.txt
-    - cd ./test && pyinstaller --onedir main.py
+    - cd ./test && pyinstaller --onefile main.py
   rules:
     - when: always
   artifacts:
     paths:
-      - ./test/build/main/*
+      - ./test/build/*
     when: always
     expire_in: 2 week
 
@@ -41,11 +41,11 @@ linux_slim_bin:
   script:
     - echo "Creating Linux artifact"
     - pip install -r ./test/requirements.txt
-    - cd ./test && pyinstaller --onedir main.py
+    - cd ./test && pyinstaller --onefile main.py
   rules:
     - when: always
   artifacts:
     paths:
-      - ./test/build/main/*
+      - ./test/build/*
     when: always
     expire_in: 2 week

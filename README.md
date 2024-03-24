@@ -109,8 +109,8 @@ windows_bin:
   script:
     - echo "Creating Windows artifact"
     - pip install -r ./test/requirements.txt
-    - cd ./test && pyinstaller --onedir main.py
-    - cp ./build/main/*.exe ../
+    - cd ./test && pyinstaller --onefile main.py
+    - cp ./build/*.exe ../
   rules:
     - when: always
   artifacts:
