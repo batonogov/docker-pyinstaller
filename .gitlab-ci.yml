@@ -6,7 +6,7 @@ windows_bin:
   script:
     - echo "Creating Windows artifact"
     - cd ./test && pyinstaller --onedir main.py
-    - cp ./test/build/main/*.exe .
+    - cp ./build/main/*.exe .
   rules:
     - when: always
   artifacts:
