@@ -14,3 +14,54 @@ windows_bin:
       - '*.exe'
     when: always
     expire_in: 2 week
+
+linux_bin:
+  stage: deploy
+  image:
+    name: batonogov/pyinstaller-linux:v4.2.6
+    entrypoint: ['']
+  script:
+    - echo "Creating Linux artifact"
+    - cd ./test && pyinstaller --onedir main.py
+    - cp ./build/main/* ../
+  rules:
+    - when: always
+  artifacts:
+    paths:
+      - '*'
+    when: always
+    expire_in: 2 week
+
+linux_slim_bin:
+  stage: deploy
+  image:
+    name: batonogov/pyinstaller-linux:v4.2.6-slim
+    entrypoint: ['']
+  script:
+    - echo "Creating Linux artifact"
+    - cd ./test && pyinstaller --onedir main.py
+    - cp ./build/main/* ../
+  rules:
+    - when: always
+  artifacts:
+    paths:
+      - '*'
+    when: always
+    expire_in: 2 week
+
+osx_bin:
+  stage: deploy
+  image:
+    name: batonogov/pyinstaller-osx:v4.2.6
+    entrypoint: ['']
+  script:
+    - echo "Creating OSX artifact"
+    - cd ./test && pyinstaller --onedir main.py
+    - cp ./build/main/* ../
+  rules:
+    - when: always
+  artifacts:
+    paths:
+      - '*'
+    when: always
+    expire_in: 2 week
