@@ -1,6 +1,8 @@
 windows_bin:
   stage: deploy
-  image: ghcr.io/batonogov/pyinstaller-windows:gitlab_ci
+  image:
+    name: batonogov/pyinstaller-windows:v4.2.6
+    entrypoint: ['']
   script:
     - cd ./test
     - echo "Creating Windows artifact"
