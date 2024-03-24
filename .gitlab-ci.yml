@@ -4,9 +4,12 @@ windows_bin:
     name: batonogov/pyinstaller-windows:v4.2.6
     entrypoint: ['']
   script:
-    - cd ./test
     - echo "Creating Windows artifact"
-    - pyinstaller --onedir main.py
+    - cd ./test && pyinstaller --onedir main.py
   rules:
     - when: always
-  allow_failure: false
+  artifacts:
+    paths:
+      - test/dist/*.exe
+    when: always
+    expire_in: 2 week
