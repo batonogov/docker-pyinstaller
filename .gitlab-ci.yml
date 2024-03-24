@@ -1,10 +1,11 @@
 windows_bin:
   stage: deploy
   image:
-    name: batonogov/pyinstaller-windows:v4.2.6
+    name: batonogov/pyinstaller-windows:latest
     entrypoint: ['']
   script:
     - echo "Creating Windows artifact"
+    - pip install -r ./test/requirements.txt
     - cd ./test && pyinstaller --onedir main.py
     - cp ./build/main/*.exe ../
   rules:
@@ -18,10 +19,11 @@ windows_bin:
 linux_bin:
   stage: deploy
   image:
-    name: batonogov/pyinstaller-linux:v4.2.6
+    name: batonogov/pyinstaller-linux:latest
     entrypoint: ['']
   script:
     - echo "Creating Linux artifact"
+    - pip install -r ./test/requirements.txt
     - cd ./test && pyinstaller --onedir main.py
   rules:
     - when: always
@@ -34,10 +36,11 @@ linux_bin:
 linux_slim_bin:
   stage: deploy
   image:
-    name: batonogov/pyinstaller-linux:v4.2.6-slim
+    name: batonogov/pyinstaller-linux:latest-slim
     entrypoint: ['']
   script:
     - echo "Creating Linux artifact"
+    - pip install -r ./test/requirements.txt
     - cd ./test && pyinstaller --onedir main.py
   rules:
     - when: always
@@ -50,10 +53,11 @@ linux_slim_bin:
 osx_bin:
   stage: deploy
   image:
-    name: batonogov/pyinstaller-osx:v4.2.6
+    name: batonogov/pyinstaller-osx:latest
     entrypoint: ['']
   script:
     - echo "Creating OSX artifact"
+    - pip install -r ./test/requirements.txt
     - cd ./test && pyinstaller --onedir main.py
   rules:
     - when: always
