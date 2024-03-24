@@ -7,7 +7,7 @@ windows_bin:
     - echo "Creating Windows artifact"
     - pip install -r ./test/requirements.txt
     - cd ./test && pyinstaller --onefile main.py
-    - cp ./build/*.exe ../
+    - cp ./dist/*.exe ../
   rules:
     - when: always
   artifacts:
@@ -29,7 +29,7 @@ linux_bin:
     - when: always
   artifacts:
     paths:
-      - ./test/build/*
+      - ./test/dist/*
     when: always
     expire_in: 2 week
 
@@ -46,6 +46,6 @@ linux_slim_bin:
     - when: always
   artifacts:
     paths:
-      - ./test/build/*
+      - ./test/dist/*
     when: always
     expire_in: 2 week
