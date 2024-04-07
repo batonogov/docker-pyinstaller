@@ -24,14 +24,22 @@ repos:
     rev: v2.3.1
     hooks:
       - id: autoflake
+        args: [--remove-all-unused-imports, --remove-unused-variables, --in-place, --recursive]  # Улучшенная очистка кода
 
   - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-    rev: v2.12.0
+    rev: v2.13.0
     hooks:
       - id: pretty-format-yaml
         args: [--autofix, --indent, '2', --offset, '2']
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.15.1
+    rev: v3.15.2
     hooks:
       - id: pyupgrade
+        args: [--py312-plus]  # Указание минимальной версии Python для обновления синтаксиса
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        args: [--profile, black]  # Совместимость с форматированием Black
