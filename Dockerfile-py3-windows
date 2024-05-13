@@ -1,10 +1,10 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 LABEL maintainer="f.batonogov@yandex.ru"
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ARG WINE_VERSION=winehq-stable
+ARG WINE_VERSION=winehq-devel
 ARG PYTHON_VERSION=3.12.3
 ARG PYINSTALLER_VERSION=6.6.0
 
@@ -18,9 +18,9 @@ RUN set -x \
         wget \
         gpg-agent \
         rename \
-    && wget -nv https://dl.winehq.org/wine-builds/winehq.key \
-    && apt-key add winehq.key \
-    && add-apt-repository 'https://dl.winehq.org/wine-builds/ubuntu/' \
+    && mkdir -pm755 /etc/apt/keyrings \
+    && wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key \
+    && wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/noble/winehq-noble.sources \
     && apt update -qy \
     && apt install --no-install-recommends -qfy \
         $WINE_VERSION \
