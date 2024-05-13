@@ -306,8 +306,6 @@ First release, works.
 
 ## Star History
 
-## Star History
-
 <a href="https://star-history.com/#batonogov/docker-pyinstaller&Date">
  <picture>
    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=batonogov/docker-pyinstaller&type=Date&theme=dark" />

@@ -1,4 +1,4 @@
-FROM sickcodes/docker-osx:latest
+FROM sickcodes/docker-osx:sonoma
 SHELL ["/bin/bash", "-i", "-c"]
 
 LABEL maintainer="f.batonogov@yandex.ru"
