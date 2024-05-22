@@ -25,7 +25,7 @@ If applicable, add screenshots to help explain your problem.
 
 **Docker information (please provide the following information):**
 - Docker image: [for example, batonogov/pyinstaller-linux:latest]
-- Docker version: [for example, 10.20.7]
+- Docker version: [for example, 26.1.1]
 - Run command: [for example, docker run --volume "$(pwd):/src/" batonogov/pyinstaller-linux:latest]
 
 **Additional context**
