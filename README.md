@@ -90,7 +90,7 @@ will generate a `spec` file for `your-script.py` in your current working directo
 
 ### How do I change the PyInstaller version used?
 
-Add `pyinstaller==6.5.0` to your `requirements.txt`.
+Add `pyinstaller==6.6.0` to your `requirements.txt`.
 
 ### Is it possible to use a package mirror?
 
