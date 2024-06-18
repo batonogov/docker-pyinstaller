@@ -120,6 +120,29 @@ windows_bin:
     expire_in: 2 week
 ```
 
+### How do I use image in Bitbucket CI?
+
+[Bitbucket doesn't support custom entrypoints](https://confluence.atlassian.com/bbkb/bitbucket-pipelines-does-not-execute-the-build-image-s-entrypoint-cmd-script-1299910012.html),
+so we need to manually call it. Otherwise the setup is similar to what you would
+do with GitLab CI.
+
+```yaml
+pipelines:
+  default:
+    - step:
+        name: Build Windows executable
+        image: batonogov/pyinstaller-windows:latest
+        artifacts:
+          paths:
+            - *.exe
+        script:
+          - echo "Creating Windows artifact"
+          - SPECFILE="$BITBUCKET_CLONE_DIR/sparvio-logger-bootstrap.spec" WORKDIR="$BITBUCKET_CLONE_DIR" bash /entrypoint.sh
+          - pip install -r ./test/requirements.txt
+          - cd ./test && pyinstaller --onefile main.py
+          - cp ./dist/*.exe ../
+```
+
 ## Known Issues
 
 [ntdll.so Path Missing](https://github.com/batonogov/docker-pyinstaller/issues/23)
