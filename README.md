@@ -100,7 +100,7 @@ Yes, by supplying the `PYPI_URL` and `PYPI_INDEX_URL` environment variables that
 
 See [example](.gitlab-ci.yml) for GitLab CI.
 
-```gitlab_ci
+```yaml
 windows_bin:
   stage: deploy
   image:
