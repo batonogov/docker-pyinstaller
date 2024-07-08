@@ -2,7 +2,7 @@ FROM ubuntu:24.04
 
 LABEL maintainer="f.batonogov@yandex.ru"
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 ARG WINE_VERSION=winehq-devel
 ARG PYTHON_VERSION=3.12.4
@@ -35,9 +35,9 @@ RUN set -x \
     && mv winetricks /usr/local/bin
 
 # wine settings
-ENV WINEARCH win64
-ENV WINEDEBUG fixme-all
-ENV WINEPREFIX /wine
+ENV WINEARCH=win64
+ENV WINEDEBUG=fixme-all
+ENV WINEPREFIX=/wine
 
 # PYPI repository location
 ENV PYPI_URL=https://pypi.python.org/
