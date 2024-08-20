@@ -83,6 +83,27 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+      - name: Build and push slim Docker image
+        id: build-bookworm-and-push
+        uses: docker/build-push-action@v6.5.0
+        with:
+          context: .
+          file: Dockerfile-py3-linux-slim
+          platforms: |
+            linux/amd64
+            linux/arm64
+            linux/arm/v5
+            linux/arm/v7
+            linux/arm64/v8
+            linux/ppc64le
+            linux/s390x
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}-bookworm
+          labels: ${{ steps.meta.outputs.labels }}-bookworm
+          build-args: PYTHON_VERSION=3.12.4-bookworm
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
       - name: Build and push Docker image
         id: build-and-push
         uses: docker/build-push-action@v6.5.0
