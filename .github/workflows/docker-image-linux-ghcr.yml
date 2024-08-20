@@ -79,11 +79,9 @@ jobs:
             linux/arm64/v8
             linux/ppc64le
             linux/s390x
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}-slim
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest-slim
-          labels: ${{ steps.meta.outputs.labels }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}-slim
+          labels: ${{ steps.meta.outputs.labels }}-slim
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -101,7 +99,7 @@ jobs:
             linux/arm64/v8
             linux/ppc64le
             linux/s390x
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
