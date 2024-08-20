@@ -66,7 +66,7 @@ jobs:
       - name: Build and push slim bookworm Docker image
         id: build-slim-bookworm-and-push
         uses: docker/build-push-action@v6.5.0
-        with: &build-image
+        with:
           context: .
           file: Dockerfile-py3-linux-slim
           platforms: |
@@ -92,7 +92,17 @@ jobs:
         id: build-slim-bullseye-and-push
         uses: docker/build-push-action@v6.5.0
         with:
-          <<: *build-image
+          context: .
+          file: Dockerfile-py3-linux-slim
+          platforms: |
+            linux/amd64
+            linux/arm64
+            linux/arm/v5
+            linux/arm/v7
+            linux/arm64/v8
+            linux/ppc64le
+            linux/s390x
+          push: true
           build-args: PYTHON_VERSION=3.12.4-slim-bullseye
           tags: |
             ${{ steps.meta.outputs.tags }}-slim
@@ -100,13 +110,24 @@ jobs:
           labels: |
             ${{ steps.meta.outputs.labels }}-slim
             ${{ steps.meta.outputs.labels }}-slim-bullseye
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Build and push bookworm Docker image
         id: build-bookworm-and-push
         uses: docker/build-push-action@v6.5.0
         with:
-          <<: *build-image
+          context: .
           file: Dockerfile-py3-linux
+          platforms: |
+            linux/amd64
+            linux/arm64
+            linux/arm/v5
+            linux/arm/v7
+            linux/arm64/v8
+            linux/ppc64le
+            linux/s390x
+          push: true
           build-args: PYTHON_VERSION=3.12.4-slim-bookworm
           tags: |
             ${{ steps.meta.outputs.tags }}-slim
@@ -114,13 +135,24 @@ jobs:
           labels: |
             ${{ steps.meta.outputs.labels }}-slim
             ${{ steps.meta.outputs.labels }}-slim-bookworm
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Build and push bullseye Docker image
         id: build-bullseye-and-push
         uses: docker/build-push-action@v6.5.0
         with:
-          <<: *build-image
+          context: .
           file: Dockerfile-py3-linux
+          platforms: |
+            linux/amd64
+            linux/arm64
+            linux/arm/v5
+            linux/arm/v7
+            linux/arm64/v8
+            linux/ppc64le
+            linux/s390x
+          push: true
           build-args: PYTHON_VERSION=3.12.4-slim-bullseye
           tags: |
             ${{ steps.meta.outputs.tags }}-slim
@@ -128,3 +160,5 @@ jobs:
           labels: |
             ${{ steps.meta.outputs.labels }}-slim
             ${{ steps.meta.outputs.labels }}-slim-bullseye
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
