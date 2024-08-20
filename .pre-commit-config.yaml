@@ -16,7 +16,7 @@ repos:
       - id: detect-private-key
 
   - repo: https://github.com/psf/black
-    rev: 24.4.2
+    rev: 24.8.0
     hooks:
       - id: black
 
@@ -27,13 +27,13 @@ repos:
         args: [--remove-all-unused-imports, --remove-unused-variables, --in-place, --recursive]  # Улучшенная очистка кода
 
   - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-    rev: v2.13.0
+    rev: v2.14.0
     hooks:
       - id: pretty-format-yaml
         args: [--autofix, --indent, '2', --offset, '2']
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.16.0
+    rev: v3.17.0
     hooks:
       - id: pyupgrade
         args: [--py312-plus]  # Указание минимальной версии Python для обновления синтаксиса
