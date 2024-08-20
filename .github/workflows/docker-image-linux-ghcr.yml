@@ -128,13 +128,13 @@ jobs:
             linux/ppc64le
             linux/s390x
           push: true
-          build-args: PYTHON_VERSION=3.12.4-slim-bookworm
+          build-args: PYTHON_VERSION=3.12.4-bookworm
           tags: |
-            ${{ steps.meta.outputs.tags }}-slim
-            ${{ steps.meta.outputs.tags }}-slim-bookworm
+            ${{ steps.meta.outputs.tags }}
+            ${{ steps.meta.outputs.tags }}-bookworm
           labels: |
-            ${{ steps.meta.outputs.labels }}-slim
-            ${{ steps.meta.outputs.labels }}-slim-bookworm
+            ${{ steps.meta.outputs.labels }}
+            ${{ steps.meta.outputs.labels }}-bookworm
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -153,12 +153,12 @@ jobs:
             linux/ppc64le
             linux/s390x
           push: true
-          build-args: PYTHON_VERSION=3.12.4-slim-bullseye
+          build-args: PYTHON_VERSION=3.12.4-bullseye
           tags: |
-            ${{ steps.meta.outputs.tags }}-slim
-            ${{ steps.meta.outputs.tags }}-slim-bullseye
+            ${{ steps.meta.outputs.tags }}
+            ${{ steps.meta.outputs.tags }}-bullseye
           labels: |
-            ${{ steps.meta.outputs.labels }}-slim
-            ${{ steps.meta.outputs.labels }}-slim-bullseye
+            ${{ steps.meta.outputs.labels }}
+            ${{ steps.meta.outputs.labels }}-bullseye
           cache-from: type=gha
           cache-to: type=gha,mode=max
