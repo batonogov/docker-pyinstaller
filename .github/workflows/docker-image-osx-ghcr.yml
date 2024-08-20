@@ -34,7 +34,6 @@ jobs:
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
       - name: Install cosign
-        if: github.event_name != 'pull_request'
         uses: sigstore/cosign-installer@v3.5.0
         with:
           cosign-release: v2.2.4
@@ -48,7 +47,6 @@ jobs:
       # Login against a Docker registry except on PR
       # https://github.com/docker/login-action
       - name: Log into registry ${{ env.REGISTRY }}
-        if: github.event_name != 'pull_request'
         uses: docker/login-action@v3.1.0
         with:
           registry: ${{ env.REGISTRY }}
