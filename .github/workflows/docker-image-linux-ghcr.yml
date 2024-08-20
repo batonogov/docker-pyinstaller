@@ -89,7 +89,7 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Build and push slim bullseye Docker image
-        id: build-bullseye-and-push
+        id: build-slim-bullseye-and-push
         uses: docker/build-push-action@v6.5.0
         with:
           <<: *build-image
