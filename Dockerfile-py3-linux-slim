@@ -1,4 +1,5 @@
-FROM python:3.12.4-slim
+ARG PYTHON_VERSION=3.12.4-slim
+FROM python:${PYTHON_VERSION}
 SHELL ["/bin/bash", "-i", "-c"]
 
 LABEL maintainer="f.batonogov@yandex.ru"
@@ -19,9 +20,8 @@ RUN apt update \
     && rm -rf \
         /var/lib/apt/lists/* \
         /var/cache/* \
-    && pip3 install \
+    && pip3 install --no-cache-dir \
         pyinstaller==$PYINSTALLER_VERSION \
-    && pip3 cache purge \
     && chmod +x /entrypoint.sh
 
 VOLUME /src/
