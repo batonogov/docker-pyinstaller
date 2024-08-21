@@ -7,7 +7,7 @@ are a trio of Docker/Podman containers to ease compiling Python applications to 
 
 Images available on multiple container registry:
 
-- [hub.docker.com](https://hub.docker.com/)
+- [hub.docker.com](https://hub.docker.com/u/batonogov)
 
   - `batonogov/pyinstaller-windows` / `docker.io/batonogov/pyinstaller-windows`
   - `batonogov/pyinstaller-linux` / `docker.io/batonogov/pyinstaller-linux`
@@ -19,7 +19,11 @@ Images available on multiple container registry:
   - `ghcr.io/batonogov/pyinstaller-linux`
   - `ghcr.io/batonogov/pyinstaller-osx`
 
-For linux images have slim version.
+For linux images have slim and bullseye/bookworm version will ensure better compatibility.
+
+- `-slim`
+- `-slim-bookworm`
+- `-slim-bullseye`
 
 ## Usage
 
