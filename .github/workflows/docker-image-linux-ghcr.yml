@@ -80,7 +80,7 @@ jobs:
             linux/ppc64le
             linux/s390x
           push: true
-          build-args: PYTHON_VERSION=3.12.4-slim-bookworm
+          build-args: PYTHON_VERSION=3.12.5-slim-bookworm
           tags: |
             ${{ steps.meta.outputs.tags }}-slim
             ${{ steps.meta.outputs.tags }}-slim-bookworm
@@ -105,7 +105,7 @@ jobs:
             linux/ppc64le
             linux/s390x
           push: true
-          build-args: PYTHON_VERSION=3.12.4-slim-bullseye
+          build-args: PYTHON_VERSION=3.12.5-slim-bullseye
           tags: |
             ${{ steps.meta.outputs.tags }}-slim-bullseye
           labels: |
@@ -128,7 +128,7 @@ jobs:
             linux/ppc64le
             linux/s390x
           push: true
-          build-args: PYTHON_VERSION=3.12.4-bookworm
+          build-args: PYTHON_VERSION=3.12.5-bookworm
           tags: |
             ${{ steps.meta.outputs.tags }}
             ${{ steps.meta.outputs.tags }}-bookworm
@@ -153,7 +153,7 @@ jobs:
             linux/ppc64le
             linux/s390x
           push: true
-          build-args: PYTHON_VERSION=3.12.4-bullseye
+          build-args: PYTHON_VERSION=3.12.5-bullseye
           tags: |
             ${{ steps.meta.outputs.tags }}-bullseye
           labels: |
