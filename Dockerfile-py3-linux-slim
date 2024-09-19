@@ -1,4 +1,4 @@
-ARG PYTHON_VERSION=3.12.5-slim
+ARG PYTHON_VERSION=3.12.6-slim
 FROM python:${PYTHON_VERSION}
 SHELL ["/bin/bash", "-i", "-c"]
 
