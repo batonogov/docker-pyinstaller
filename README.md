@@ -1,7 +1,7 @@
 # PyInstaller Docker Images
 
-**batonogov/pyinstaller-linux**, **batonogov/pyinstaller-windows** and **batonogov/pyinstaller-osx (Experimental)**
-are a trio of Docker/Podman containers to ease compiling Python applications to binaries / exe files.
+**batonogov/pyinstaller-linux** and **batonogov/pyinstaller-windows**
+are Docker/Podman containers designed to simplify the process of compiling Python applications into binaries/executables.
 
 ## Container registry
 
@@ -11,13 +11,11 @@ Images available on multiple container registry:
 
   - `batonogov/pyinstaller-windows` / `docker.io/batonogov/pyinstaller-windows`
   - `batonogov/pyinstaller-linux` / `docker.io/batonogov/pyinstaller-linux`
-  - `batonogov/pyinstaller-osx` / `docker.io/batonogov/pyinstaller-osx`
 
 - [ghcr.io](https://github.com/batonogov?tab=packages&repo_name=docker-pyinstaller)
 
   - `ghcr.io/batonogov/pyinstaller-windows`
   - `ghcr.io/batonogov/pyinstaller-linux`
-  - `ghcr.io/batonogov/pyinstaller-osx`
 
 For linux images have slim and bullseye/bookworm version will ensure better compatibility.
 
@@ -27,9 +25,8 @@ For linux images have slim and bullseye/bookworm version will ensure better comp
 
 ## Usage
 
-There are three containers, one for `Linux` and one for `Windows` and one for `osx` builds.
+There are three containers, one for `Linux` and one for `Windows` builds.
 The Windows builder runs `Wine` inside Ubuntu to emulate Windows in Docker.
-The osx builder used `sickcodes/docker-osx` base image.
 
 To build your application, you need to mount your source code into the `/src/` volume.
 
