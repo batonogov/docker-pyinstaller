@@ -36,7 +36,7 @@ jobs:
             linux/ppc64le
             linux/s390x
           push: true
-          build-args: PYTHON_VERSION=3.12.7-slim-bookworm
+          build-args: PYTHON_VERSION=3.13.0-slim-bookworm
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux:${{ github.ref_name }}-slim
             ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux:${{ github.ref_name }}-slim-bookworm
@@ -52,7 +52,7 @@ jobs:
             linux/arm/v7
             linux/arm64/v8
           push: true
-          build-args: PYTHON_VERSION=3.12.7-slim-bullseye
+          build-args: PYTHON_VERSION=3.13.0-slim-bullseye
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux:${{ github.ref_name }}-slim-bullseye
 
@@ -69,7 +69,7 @@ jobs:
             linux/ppc64le
             linux/s390x
           push: true
-          build-args: PYTHON_VERSION=3.12.7-bookworm
+          build-args: PYTHON_VERSION=3.13.0-bookworm
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux:${{ github.ref_name }}
             ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux:${{ github.ref_name }}-bookworm
@@ -85,6 +85,6 @@ jobs:
             linux/arm/v7
             linux/arm64/v8
           push: true
-          build-args: PYTHON_VERSION=3.12.7-bullseye
+          build-args: PYTHON_VERSION=3.13.0-bullseye
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux:${{ github.ref_name }}-bullseye
