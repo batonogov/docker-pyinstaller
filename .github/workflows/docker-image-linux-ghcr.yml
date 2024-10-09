@@ -72,8 +72,8 @@ jobs:
           context: .
           file: Dockerfile-py3-linux-slim
           platforms: |
+            linux/386
             linux/amd64
-            linux/arm64
             linux/arm/v5
             linux/arm/v7
             linux/arm64/v8
@@ -97,13 +97,10 @@ jobs:
           context: .
           file: Dockerfile-py3-linux-slim
           platforms: |
+            linux/386
             linux/amd64
-            linux/arm64
-            linux/arm/v5
             linux/arm/v7
             linux/arm64/v8
-            linux/ppc64le
-            linux/s390x
           push: true
           build-args: PYTHON_VERSION=3.12.7-slim-bullseye
           tags: |
@@ -120,8 +117,8 @@ jobs:
           context: .
           file: Dockerfile-py3-linux
           platforms: |
+            linux/386
             linux/amd64
-            linux/arm64
             linux/arm/v5
             linux/arm/v7
             linux/arm64/v8
@@ -145,13 +142,10 @@ jobs:
           context: .
           file: Dockerfile-py3-linux
           platforms: |
+            linux/386
             linux/amd64
-            linux/arm64
-            linux/arm/v5
             linux/arm/v7
             linux/arm64/v8
-            linux/ppc64le
-            linux/s390x
           push: true
           build-args: PYTHON_VERSION=3.12.7-bullseye
           tags: |
