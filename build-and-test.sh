@@ -16,7 +16,7 @@ build_and_run() {
     local dockerfile=$3
     local pyinstaller_args=${4:-"--onefile"}
 
-    $build_cmd --platform linux/amd64 -f "$dockerfile" -t pyinstaller_test . && \
+    $build_cmd -f "$dockerfile" -t pyinstaller_test . && \
     $run_cmd -v "$(pwd)/test:/src/" pyinstaller_test "pyinstaller main.py $pyinstaller_args"
 }
 

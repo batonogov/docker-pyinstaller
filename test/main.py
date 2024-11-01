@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 import requests
 from flask import Flask, jsonify
+from flask_wtf.csrf import CSRFProtect
 from sqlalchemy import create_engine, text
 
 # Logging configuration
@@ -52,6 +53,8 @@ def data_processing():
 # Function to test Flask functionality
 def start_flask_app():
     app = Flask(__name__)
+    csrf = CSRFProtect()
+    csrf.init_app(app)
 
     @app.route("/")
     def index():
