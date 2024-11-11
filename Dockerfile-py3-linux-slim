@@ -7,7 +7,7 @@ SHELL ["/bin/bash", "-i", "-c"]
 LABEL maintainer="f.batonogov@yandex.ru"
 
 # Define PyInstaller version as an argument
-ARG PYINSTALLER_VERSION=6.11.0
+ARG PYINSTALLER_VERSION=6.11.1
 
 # Configure Python Package Index URLs for pip
 ENV PYPI_URL=https://pypi.python.org/
