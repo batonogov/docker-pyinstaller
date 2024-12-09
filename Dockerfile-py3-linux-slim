@@ -1,5 +1,5 @@
 # Define Python version as an argument, using the slim variant for a smaller image
-ARG PYTHON_VERSION=3.13.0-slim
+ARG PYTHON_VERSION=3.13.1-slim
 FROM python:${PYTHON_VERSION}
 SHELL ["/bin/bash", "-i", "-c"]
 
