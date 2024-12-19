@@ -24,7 +24,7 @@ repos:
     rev: v2.3.1
     hooks:
       - id: autoflake
-        args: [--remove-all-unused-imports, --remove-unused-variables, --in-place, --recursive]  # Улучшенная очистка кода
+        args: [--remove-all-unused-imports, --remove-unused-variables, --in-place, --recursive]
 
   - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
     rev: v2.14.0
@@ -33,13 +33,13 @@ repos:
         args: [--autofix, --indent, '2', --offset, '2']
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.19.0
+    rev: v3.19.1
     hooks:
       - id: pyupgrade
-        args: [--py312-plus]  # Указание минимальной версии Python для обновления синтаксиса
+        args: [--py313-plus]
 
   - repo: https://github.com/PyCQA/isort
     rev: 5.13.2
     hooks:
       - id: isort
-        args: [--profile, black]  # Совместимость с форматированием Black
+        args: [--profile, black]
