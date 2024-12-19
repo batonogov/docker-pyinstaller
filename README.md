@@ -4,7 +4,6 @@
 ![GitHub forks](https://img.shields.io/github/forks/batonogov/docker-pyinstaller?style=flat-square)
 ![GitHub issues](https://img.shields.io/github/issues/batonogov/docker-pyinstaller?style=flat-square)
 ![GitHub license](https://img.shields.io/github/license/batonogov/docker-pyinstaller?style=flat-square)
-![GitHub visitors](https://visitor-badge.laobi.icu/badge?page_id=batonogov.docker-pyinstaller)
 
 # PyInstaller Docker Images
 
@@ -346,18 +345,6 @@ First release, works.
  </picture>
 </a>
 
-## Stars Over Time
-
-<img src="https://starchart.cc/batonogov/docker-pyinstaller.svg" alt="Stars Over Time" />
-
 ## Repository Stats
 
 <img src="https://github-readme-stats.vercel.app/api?username=batonogov&repo=docker-pyinstaller&show_icons=true&theme=radical" alt="Repository Stats" />
-
-## Development Stats
-
-<img src="https://github-readme-stats.vercel.app/api/wakatime?username=batonogov&theme=dark&layout=compact" alt="WakaTime Stats" />
-
-## Contribution Graph
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=batonogov&theme=github" alt="Contribution Graph" />
