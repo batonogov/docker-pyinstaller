@@ -4,7 +4,7 @@
 ![GitHub forks](https://img.shields.io/github/forks/batonogov/docker-pyinstaller?style=flat-square)
 ![GitHub issues](https://img.shields.io/github/issues/batonogov/docker-pyinstaller?style=flat-square)
 ![GitHub license](https://img.shields.io/github/license/batonogov/docker-pyinstaller?style=flat-square)
-![GitHub visitors](https://visitor-badge.laobi.icu/badge?page_id=batonogov.docker-pyinstaller?style=flat-square)
+![GitHub visitors](https://visitor-badge.laobi.icu/badge?page_id=batonogov.docker-pyinstaller)
 
 # PyInstaller Docker Images
 
