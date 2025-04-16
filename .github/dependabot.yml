@@ -3,4 +3,11 @@ updates:
   - package-ecosystem: github-actions
     directory: /   # Location of package manifests
     schedule:
-      interval: weekly
+      interval: daily
+    groups:
+      github-actions:
+        patterns: ['*']
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: daily
