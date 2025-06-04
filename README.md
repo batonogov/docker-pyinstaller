@@ -151,12 +151,6 @@ pipelines:
           - cp ./dist/*.exe ../
 ```
 
-## Known Issues
-
-[ntdll.so Path Missing](https://github.com/batonogov/docker-pyinstaller/issues/23)
-
-[Outdated Microsoft C++ Build Tools](https://github.com/batonogov/docker-pyinstaller/issues/11)
-
 ## History
 
 Now release information will be [here](https://github.com/batonogov/docker-pyinstaller/releases).
