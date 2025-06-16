@@ -1,5 +1,5 @@
 # Use ARG to set the Python version
-ARG PYTHON_VERSION=3.13.4
+ARG PYTHON_VERSION=3.13.5
 FROM python:${PYTHON_VERSION}
 SHELL ["/bin/bash", "-i", "-c"]
 
