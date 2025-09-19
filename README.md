@@ -24,11 +24,11 @@ Images available on multiple container registry:
   - `ghcr.io/batonogov/pyinstaller-windows`
   - `ghcr.io/batonogov/pyinstaller-linux`
 
-For linux images have slim and bullseye/bookworm version will ensure better compatibility.
+For linux images have slim and trixie/bookworm version will ensure better compatibility.
 
 - `-slim`
 - `-slim-bookworm`
-- `-slim-bullseye`
+- `-slim-trixie`
 
 ## Usage
 

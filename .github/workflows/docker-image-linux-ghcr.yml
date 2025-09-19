@@ -92,8 +92,8 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Build and push slim bullseye Docker image
-        id: build-slim-bullseye-and-push
+      - name: Build and push slim trixie Docker image
+        id: build-slim-trixie-and-push
         uses: docker/build-push-action@v6.18.0
         with:
           context: .
@@ -101,14 +101,18 @@ jobs:
           platforms: |
             linux/386
             linux/amd64
+            linux/arm/v5
             linux/arm/v7
             linux/arm64/v8
+            linux/ppc64le
+            linux/riscv64
+            linux/s390x
           push: true
-          build-args: PYTHON_VERSION=3.13.7-slim-bullseye
+          build-args: PYTHON_VERSION=3.13.7-slim-trixie
           tags: |
-            ${{ steps.meta.outputs.tags }}-slim-bullseye
+            ${{ steps.meta.outputs.tags }}-slim-trixie
           labels: |
-            ${{ steps.meta.outputs.labels }}-slim-bullseye
+            ${{ steps.meta.outputs.labels }}-slim-trixie
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -137,8 +141,8 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Build and push bullseye Docker image
-        id: build-bullseye-and-push
+      - name: Build and push trixie Docker image
+        id: build-trixie-and-push
         uses: docker/build-push-action@v6.18.0
         with:
           context: .
@@ -146,13 +150,17 @@ jobs:
           platforms: |
             linux/386
             linux/amd64
+            linux/arm/v5
             linux/arm/v7
             linux/arm64/v8
+            linux/ppc64le
+            linux/riscv64
+            linux/s390x
           push: true
-          build-args: PYTHON_VERSION=3.13.7-bullseye
+          build-args: PYTHON_VERSION=3.13.7-trixie
           tags: |
-            ${{ steps.meta.outputs.tags }}-bullseye
+            ${{ steps.meta.outputs.tags }}-trixie
           labels: |
-            ${{ steps.meta.outputs.labels }}-bullseye
+            ${{ steps.meta.outputs.labels }}-trixie
           cache-from: type=gha
           cache-to: type=gha,mode=max
