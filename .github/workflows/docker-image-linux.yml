@@ -49,12 +49,16 @@ jobs:
           platforms: |
             linux/386
             linux/amd64
+            linux/arm/v5
             linux/arm/v7
             linux/arm64/v8
+            linux/ppc64le
+            linux/riscv64
+            linux/s390x
           push: true
-          build-args: PYTHON_VERSION=3.13.7-slim-bullseye
+          build-args: PYTHON_VERSION=3.13.7-slim-trixie
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux:${{ github.ref_name }}-slim-bullseye
+            ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux:${{ github.ref_name }}-slim-trixie
 
       - name: Build and push
         uses: docker/build-push-action@v6.18.0
@@ -82,9 +86,13 @@ jobs:
           platforms: |
             linux/386
             linux/amd64
+            linux/arm/v5
             linux/arm/v7
             linux/arm64/v8
+            linux/ppc64le
+            linux/riscv64
+            linux/s390x
           push: true
-          build-args: PYTHON_VERSION=3.13.7-bullseye
+          build-args: PYTHON_VERSION=3.13.7-trixie
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux:${{ github.ref_name }}-bullseye
+            ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux:${{ github.ref_name }}-trixie
