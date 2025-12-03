@@ -10,7 +10,7 @@ jobs:
   pull-request:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.0
+      - uses: actions/checkout@v6.0.1
 
       - name: Auto Pull Request
         uses: diillson/auto-pull-request@v1.0.1
