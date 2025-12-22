@@ -82,7 +82,7 @@ jobs:
             linux/ppc64le
             linux/s390x
           push: true
-          build-args: PYTHON_VERSION=3.13.9-slim-bookworm
+          build-args: PYTHON_VERSION=3.13.11-slim-bookworm
           tags: |
             ${{ steps.meta.outputs.tags }}-slim
             ${{ steps.meta.outputs.tags }}-slim-bookworm
@@ -108,7 +108,7 @@ jobs:
             linux/riscv64
             linux/s390x
           push: true
-          build-args: PYTHON_VERSION=3.13.9-slim-trixie
+          build-args: PYTHON_VERSION=3.13.11-slim-trixie
           tags: |
             ${{ steps.meta.outputs.tags }}-slim-trixie
           labels: |
@@ -131,7 +131,7 @@ jobs:
             linux/ppc64le
             linux/s390x
           push: true
-          build-args: PYTHON_VERSION=3.13.9-bookworm
+          build-args: PYTHON_VERSION=3.13.11-bookworm
           tags: |
             ${{ steps.meta.outputs.tags }}
             ${{ steps.meta.outputs.tags }}-bookworm
@@ -157,7 +157,7 @@ jobs:
             linux/riscv64
             linux/s390x
           push: true
-          build-args: PYTHON_VERSION=3.13.9-trixie
+          build-args: PYTHON_VERSION=3.13.11-trixie
           tags: |
             ${{ steps.meta.outputs.tags }}-trixie
           labels: |
