@@ -15,12 +15,14 @@ build_and_run() {
     local run_cmd=$2
     local dockerfile=$3
     local pyinstaller_args=${4:-"--onefile"}
+    local use_uv=${5:-0}
 
     $build_cmd -f "$dockerfile" -t pyinstaller_test . && \
-    $run_cmd -v "$(pwd)/test:/src/" pyinstaller_test "pyinstaller main.py $pyinstaller_args"
+    $run_cmd -v "$(pwd)/test:/src/" -e USE_UV="$use_uv" \
+        pyinstaller_test "pyinstaller main.py $pyinstaller_args"
 }
 
-if ! build_and_run "docker build" "docker run" "$1"; then
+if ! build_and_run "docker build" "docker run" "$1" "--onefile" "${USE_UV_TEST:-0}"; then
     echo "Docker build failed, trying Podman..."
-    build_and_run "podman build" "podman run" "$1"
+    build_and_run "podman build" "podman run" "$1" "--onefile" "${USE_UV_TEST:-0}"
 fi

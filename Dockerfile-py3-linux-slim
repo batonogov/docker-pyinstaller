@@ -17,14 +17,14 @@ ENV PYTHONUNBUFFERED=1
 # Copy entrypoint script early to ensure it’s available before dependency installation
 COPY entrypoint-linux.sh /entrypoint.sh
 
-# Install dependencies and PyInstaller in a single RUN command to reduce image layers
+# Install dependencies and PyInstaller/uv in a single RUN command to reduce image layers
 RUN apt update && \
     apt install --no-install-recommends -y \
         binutils \
         gcc \
         zlib1g-dev && \
     rm -rf /var/lib/apt/lists/* && \
-    pip install --no-cache-dir pyinstaller==$PYINSTALLER_VERSION && \
+    pip install --no-cache-dir pyinstaller==$PYINSTALLER_VERSION uv && \
     chmod +x /entrypoint.sh
 
 # Set the working directory and create a volume for source code
