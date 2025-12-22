@@ -100,6 +100,31 @@ will generate a `spec` file for `your-script.py` in your current working directo
 
 Add `pyinstaller==6.9.0` to your `requirements.txt`.
 
+### How do I use uv instead of pip?
+
+`uv` is available in the Linux images. Set `USE_UV=1` to switch the
+dependency install step to `uv`:
+
+```sh
+docker run \
+  --volume "$(pwd):/src/" \
+  --env USE_UV=1 \
+  batonogov/pyinstaller-linux:latest
+```
+
+If you use custom mirrors, you can pass `UV_INDEX_URL` and
+`UV_EXTRA_INDEX_URL`. When `USE_UV=1` is set, the entrypoint will also map
+`PYPI_INDEX_URL` to `UV_INDEX_URL` and `PYPI_URL` to `UV_EXTRA_INDEX_URL` if
+you did not provide them explicitly.
+
+### Local testing note
+
+When running the test build (for example with `build-and-test.sh`), PyInstaller
+may emit warnings about optional DB drivers (like `MySQLdb`/`psycopg2`) or
+Windows DLLs (like `msvcrt`/`user32`) during Linux builds. These are expected
+for the test project; the build is successful if the binary is produced in
+`dist/`.
+
 ### Is it possible to use a package mirror?
 
 Yes, by supplying the `PYPI_URL` and `PYPI_INDEX_URL` environment variables that point to your PyPi mirror.

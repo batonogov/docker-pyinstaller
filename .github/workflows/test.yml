@@ -27,6 +27,18 @@ jobs:
           echo "Building image to test"
           ./build-and-test.sh Dockerfile-py3-linux
 
+  linux-uv:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v6.0.1
+      - name: Run Tests (uv)
+        env:
+          USE_UV_TEST: "1"
+        run: |
+          echo "Building image to test (uv)"
+          ./build-and-test.sh Dockerfile-py3-linux
+
   linux-slim:
     runs-on: ubuntu-latest
     steps:
@@ -35,6 +47,18 @@ jobs:
       - name: Run Tests
         run: |
           echo "Building image to test"
+          ./build-and-test.sh Dockerfile-py3-linux-slim
+
+  linux-slim-uv:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v6.0.1
+      - name: Run Tests (uv)
+        env:
+          USE_UV_TEST: "1"
+        run: |
+          echo "Building image to test (uv)"
           ./build-and-test.sh Dockerfile-py3-linux-slim
 
   # osx:

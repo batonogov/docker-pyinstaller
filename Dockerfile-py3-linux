@@ -15,8 +15,8 @@ ENV PYTHONUNBUFFERED=1
 # Copy the entrypoint script
 COPY entrypoint-linux.sh /entrypoint.sh
 
-# Install dependencies, PyInstaller, and set execute permissions for the entrypoint
-RUN pip install --no-cache-dir pyinstaller==$PYINSTALLER_VERSION \
+# Install dependencies, PyInstaller, uv, and set execute permissions for the entrypoint
+RUN pip install --no-cache-dir pyinstaller==$PYINSTALLER_VERSION uv \
     && chmod +x /entrypoint.sh
 
 # Set the working directory and mount the volume
