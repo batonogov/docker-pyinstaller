@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+echo "Running Docker build & test before push..."
+
+if ! command -v task &>/dev/null; then
+    echo "Error: 'task' (go-task) is not installed. Skipping tests."
+    echo "Install: https://taskfile.dev/installation/"
+    exit 0
+fi
+
+task test
+
+echo "All tests passed."

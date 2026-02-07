@@ -17,17 +17,20 @@ ENV PYTHONUNBUFFERED=1
 # Copy entrypoint script early to ensure it's available before dependency installation
 COPY entrypoint-linux.sh /entrypoint.sh
 
-# Install uv
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /usr/local/bin/
-
 # Install dependencies and PyInstaller in a single RUN command to reduce image layers
+ARG TARGETARCH
 RUN apt update && \
     apt install --no-install-recommends -y \
         binutils \
         gcc \
         zlib1g-dev && \
     rm -rf /var/lib/apt/lists/* && \
-    uv pip install --system --no-cache pyinstaller==$PYINSTALLER_VERSION && \
+    if [ "$TARGETARCH" = "amd64" ] || [ "$TARGETARCH" = "arm64" ]; then \
+        pip install --no-cache-dir uv==0.10.0 && \
+        uv pip install --system --no-cache pyinstaller==$PYINSTALLER_VERSION; \
+    else \
+        pip install --no-cache-dir pyinstaller==$PYINSTALLER_VERSION; \
+    fi && \
     chmod +x /entrypoint.sh
 
 # Set the working directory and create a volume for source code

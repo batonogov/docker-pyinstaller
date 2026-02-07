@@ -1,0 +1,53 @@
+version: '3'
+
+vars:
+  TEST_DIR: ./test
+  IMAGE_PREFIX: pyinstaller-test
+
+tasks:
+  build:windows:
+    desc: Build Windows image
+    cmds:
+      - docker build -f Dockerfile-py3-windows -t {{.IMAGE_PREFIX}}-windows .
+
+  build:linux:
+    desc: Build Linux image
+    cmds:
+      - docker build -f Dockerfile-py3-linux -t {{.IMAGE_PREFIX}}-linux .
+
+  build:linux-slim:
+    desc: Build Linux slim image
+    cmds:
+      - docker build -f Dockerfile-py3-linux-slim -t {{.IMAGE_PREFIX}}-linux-slim .
+
+  test:windows:
+    desc: Build and test Windows image
+    cmds:
+      - task: build:windows
+      - docker run --rm -v "$(pwd)/{{.TEST_DIR}}:/src/" {{.IMAGE_PREFIX}}-windows "pyinstaller main.py --onefile"
+
+  test:linux:
+    desc: Build and test Linux image
+    cmds:
+      - task: build:linux
+      - docker run --rm -v "$(pwd)/{{.TEST_DIR}}:/src/" {{.IMAGE_PREFIX}}-linux "pyinstaller main.py --onefile"
+      - docker run --rm -v "$(pwd)/{{.TEST_DIR}}:/src/" {{.IMAGE_PREFIX}}-linux ./dist/main
+
+  test:linux-slim:
+    desc: Build and test Linux slim image
+    cmds:
+      - task: build:linux-slim
+      - docker run --rm -v "$(pwd)/{{.TEST_DIR}}:/src/" {{.IMAGE_PREFIX}}-linux-slim "pyinstaller main.py --onefile"
+      - docker run --rm -v "$(pwd)/{{.TEST_DIR}}:/src/" {{.IMAGE_PREFIX}}-linux-slim ./dist/main
+
+  test:
+    desc: Build and test all images
+    cmds:
+      - task: test:windows
+      - task: test:linux
+      - task: test:linux-slim
+
+  setup:
+    desc: Configure git hooks
+    cmds:
+      - git config core.hooksPath .githooks
