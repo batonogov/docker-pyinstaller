@@ -102,7 +102,7 @@ Add `pyinstaller==6.9.0` to your `requirements.txt`.
 
 ### Is it possible to use a package mirror?
 
-Yes, by supplying the `PYPI_URL` and `PYPI_INDEX_URL` environment variables that point to your PyPi mirror.
+Yes, by supplying the `PYPI_URL` and `PYPI_INDEX_URL` environment variables that point to your PyPI mirror. On Linux images, these are translated to `UV_INDEX_URL` and `UV_INSECURE_HOST` for [uv](https://github.com/astral-sh/uv), which is used as the package installer.
 
 ### How do I use image in GitLab CI?
 
