@@ -19,23 +19,37 @@ WORKDIR=${SRCDIR:-/src}
 # should we build.
 # In case it's not defind, find the first match for `*.spec`
 SPECFILE=${SPECFILE:-$(find . -maxdepth 1 -type f -name '*.spec' -print -quit)}
+
+# Choose installer: uv when available (amd64/arm64), pip otherwise
+if command -v uv &>/dev/null; then
+    PIP_INSTALL="uv pip install --system"
+else
+    PIP_INSTALL="pip3 install"
+fi
+
 # In case the user specified a custom URL for PYPI, then use
 # that one, instead of the default one.
-
 if [[ "$PYPI_URL" != "https://pypi.python.org/" ]] || \
    [[ "$PYPI_INDEX_URL" != "https://pypi.python.org/simple" ]]; then
-    export UV_INDEX_URL="$PYPI_INDEX_URL"
-    # Extract hostname to allow insecure (non-HTTPS) private mirrors
-    export UV_INSECURE_HOST="$(echo $PYPI_URL | perl -pe 's|^.*?://(.*?)(:.*?)?/.*$|$1|')"
-
-    echo "Using custom PyPI index: $UV_INDEX_URL"
-    echo "Insecure host: $UV_INSECURE_HOST"
+    if command -v uv &>/dev/null; then
+        export UV_INDEX_URL="$PYPI_INDEX_URL"
+        export UV_INSECURE_HOST="$(echo $PYPI_URL | perl -pe 's|^.*?://(.*?)(:.*?)?/.*$|$1|')"
+        echo "Using custom PyPI index (uv): $UV_INDEX_URL"
+    else
+        mkdir -p /root/.pip
+        echo "[global]" > /root/.pip/pip.conf
+        echo "index = $PYPI_URL" >> /root/.pip/pip.conf
+        echo "index-url = $PYPI_INDEX_URL" >> /root/.pip/pip.conf
+        echo "trusted-host = $(echo $PYPI_URL | perl -pe 's|^.*?://(.*?)(:.*?)?/.*$|$1|')" >> /root/.pip/pip.conf
+        echo "Using custom pip.conf:"
+        cat /root/.pip/pip.conf
+    fi
 fi
 
 cd $WORKDIR
 
 if [ -f requirements.txt ]; then
-    uv pip install --system -r requirements.txt
+    $PIP_INSTALL -r requirements.txt
 fi # [ -f requirements.txt ]
 
 echo "$@"
