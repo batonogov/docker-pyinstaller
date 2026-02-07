@@ -15,8 +15,11 @@ ENV PYTHONUNBUFFERED=1
 # Copy the entrypoint script
 COPY entrypoint-linux.sh /entrypoint.sh
 
+# Install uv
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /usr/local/bin/
+
 # Install dependencies, PyInstaller, and set execute permissions for the entrypoint
-RUN pip install --no-cache-dir pyinstaller==$PYINSTALLER_VERSION \
+RUN uv pip install --system --no-cache pyinstaller==$PYINSTALLER_VERSION \
     && chmod +x /entrypoint.sh
 
 # Set the working directory and mount the volume
