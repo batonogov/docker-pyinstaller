@@ -12,10 +12,12 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v6.0.2
+      - name: Install Task
+        uses: arduino/setup-task@v2
+        with:
+          version: 3.x
       - name: Run Tests
-        run: |
-          echo "Building image to test"
-          ./build-and-test.sh Dockerfile-py3-windows
+        run: task test:windows
 
   linux:
     runs-on: ubuntu-latest
@@ -46,7 +48,9 @@ jobs:
   #   steps:
   #     - name: Checkout Repo
   #       uses: actions/checkout@v6.0.2
+  #     - name: Install Task
+  #       uses: arduino/setup-task@v2
+  #       with:
+  #         version: 3.x
   #     - name: Run Tests
-  #       run: |
-  #         echo "Building image to test"
-  #         ./build-and-test.sh Dockerfile-py3-osx
+  #       run: task test:osx

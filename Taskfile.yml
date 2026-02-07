@@ -5,6 +5,11 @@ vars:
   IMAGE_PREFIX: pyinstaller-test
 
 tasks:
+  build:windows:
+    desc: Build Windows image
+    cmds:
+      - docker build -f Dockerfile-py3-windows -t {{.IMAGE_PREFIX}}-windows .
+
   build:linux:
     desc: Build Linux image
     cmds:
@@ -14,6 +19,12 @@ tasks:
     desc: Build Linux slim image
     cmds:
       - docker build -f Dockerfile-py3-linux-slim -t {{.IMAGE_PREFIX}}-linux-slim .
+
+  test:windows:
+    desc: Build and test Windows image
+    cmds:
+      - task: build:windows
+      - docker run --rm -v "$(pwd)/{{.TEST_DIR}}:/src/" {{.IMAGE_PREFIX}}-windows "pyinstaller main.py --onefile"
 
   test:linux:
     desc: Build and test Linux image
@@ -30,8 +41,9 @@ tasks:
       - docker run --rm -v "$(pwd)/{{.TEST_DIR}}:/src/" {{.IMAGE_PREFIX}}-linux-slim ./dist/main
 
   test:
-    desc: Build and test all Linux images
+    desc: Build and test all images
     cmds:
+      - task: test:windows
       - task: test:linux
       - task: test:linux-slim
 
