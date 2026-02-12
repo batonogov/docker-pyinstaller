@@ -24,7 +24,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
-        uses: docker/build-push-action@v6.18.0
+        uses: docker/build-push-action@v6.19.2
         with:
           file: ./Dockerfile-py3-linux-slim
           platforms: |
@@ -43,7 +43,7 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux:latest-slim
 
       - name: Build and push
-        uses: docker/build-push-action@v6.18.0
+        uses: docker/build-push-action@v6.19.2
         with:
           file: ./Dockerfile-py3-linux-slim
           platforms: |
@@ -61,7 +61,7 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux:${{ github.ref_name }}-slim-trixie
 
       - name: Build and push
-        uses: docker/build-push-action@v6.18.0
+        uses: docker/build-push-action@v6.19.2
         with:
           file: ./Dockerfile-py3-linux
           platforms: |
@@ -80,7 +80,7 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/pyinstaller-linux:latest
 
       - name: Build and push
-        uses: docker/build-push-action@v6.18.0
+        uses: docker/build-push-action@v6.19.2
         with:
           file: ./Dockerfile-py3-linux
           platforms: |
