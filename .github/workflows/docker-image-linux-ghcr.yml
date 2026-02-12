@@ -69,7 +69,7 @@ jobs:
       # https://github.com/docker/build-push-action
       - name: Build and push slim bookworm Docker image
         id: build-slim-bookworm-and-push
-        uses: docker/build-push-action@v6.18.0
+        uses: docker/build-push-action@v6.19.2
         with:
           context: .
           file: Dockerfile-py3-linux-slim
@@ -94,7 +94,7 @@ jobs:
 
       - name: Build and push slim trixie Docker image
         id: build-slim-trixie-and-push
-        uses: docker/build-push-action@v6.18.0
+        uses: docker/build-push-action@v6.19.2
         with:
           context: .
           file: Dockerfile-py3-linux-slim
@@ -118,7 +118,7 @@ jobs:
 
       - name: Build and push bookworm Docker image
         id: build-bookworm-and-push
-        uses: docker/build-push-action@v6.18.0
+        uses: docker/build-push-action@v6.19.2
         with:
           context: .
           file: Dockerfile-py3-linux
@@ -143,7 +143,7 @@ jobs:
 
       - name: Build and push trixie Docker image
         id: build-trixie-and-push
-        uses: docker/build-push-action@v6.18.0
+        uses: docker/build-push-action@v6.19.2
         with:
           context: .
           file: Dockerfile-py3-linux
