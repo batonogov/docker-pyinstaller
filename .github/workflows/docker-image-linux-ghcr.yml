@@ -46,7 +46,7 @@ jobs:
       # multi-platform images and export cache
       # https://github.com/docker/setup-buildx-action
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3.12.0
+        uses: docker/setup-buildx-action@v4.0.0
 
       # Login against a Docker registry except on PR
       # https://github.com/docker/login-action
@@ -61,7 +61,7 @@ jobs:
       # https://github.com/docker/metadata-action
       - name: Extract Docker metadata
         id: meta
-        uses: docker/metadata-action@v5.10.0
+        uses: docker/metadata-action@v6.0.0
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
@@ -69,7 +69,7 @@ jobs:
       # https://github.com/docker/build-push-action
       - name: Build and push slim bookworm Docker image
         id: build-slim-bookworm-and-push
-        uses: docker/build-push-action@v6.19.2
+        uses: docker/build-push-action@v7.0.0
         with:
           context: .
           file: Dockerfile-py3-linux-slim
@@ -94,7 +94,7 @@ jobs:
 
       - name: Build and push slim trixie Docker image
         id: build-slim-trixie-and-push
-        uses: docker/build-push-action@v6.19.2
+        uses: docker/build-push-action@v7.0.0
         with:
           context: .
           file: Dockerfile-py3-linux-slim
@@ -118,7 +118,7 @@ jobs:
 
       - name: Build and push bookworm Docker image
         id: build-bookworm-and-push
-        uses: docker/build-push-action@v6.19.2
+        uses: docker/build-push-action@v7.0.0
         with:
           context: .
           file: Dockerfile-py3-linux
@@ -143,7 +143,7 @@ jobs:
 
       - name: Build and push trixie Docker image
         id: build-trixie-and-push
-        uses: docker/build-push-action@v6.19.2
+        uses: docker/build-push-action@v7.0.0
         with:
           context: .
           file: Dockerfile-py3-linux
