@@ -25,6 +25,7 @@ tasks:
     cmds:
       - task: build:windows
       - docker run --rm -v "$(pwd)/{{.TEST_DIR}}:/src/" {{.IMAGE_PREFIX}}-windows "pyinstaller main.py --onefile"
+      - docker run --rm -v "$(pwd)/{{.TEST_DIR}}:/src/" {{.IMAGE_PREFIX}}-windows "wine C:/src/dist/main.exe"
 
   test:linux:
     desc: Build and test Linux image
