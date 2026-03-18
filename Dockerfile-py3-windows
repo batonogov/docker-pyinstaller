@@ -72,10 +72,10 @@ ENV W_WINDIR_UNIX="$W_DRIVE_C/windows"
 ENV W_SYSTEM64_DLLS="$W_WINDIR_UNIX/system32"
 ENV W_TMP="$W_DRIVE_C/windows/temp/_$0"
 
-# install Microsoft Visual C++ Redistributable for Visual Studio 2017 dll files
+# install Microsoft Visual C++ Redistributable for Visual Studio 2015-2022 dll files
 RUN set -x \
     && rm -f "$W_TMP"/* \
-    && wget -P "$W_TMP" https://download.visualstudio.microsoft.com/download/pr/11100230/15ccb3f02745c7b206ad10373cbca89b/VC_redist.x64.exe \
+    && wget -P "$W_TMP" https://aka.ms/vs/17/release/vc_redist.x64.exe \
     && cabextract -q --directory="$W_TMP" "$W_TMP"/VC_redist.x64.exe \
     && cabextract -q --directory="$W_TMP" "$W_TMP/a10" \
     && cabextract -q --directory="$W_TMP" "$W_TMP/a11" \
