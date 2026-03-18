@@ -74,14 +74,13 @@ ENV W_TMP="$W_DRIVE_C/windows/temp/_$0"
 
 # install Microsoft Visual C++ Redistributable for Visual Studio 2015-2022 dll files
 RUN set -x \
-    && rm -f "$W_TMP"/* \
+    && rm -rf "$W_TMP" && mkdir -p "$W_TMP" \
     && wget -P "$W_TMP" https://aka.ms/vs/17/release/vc_redist.x64.exe \
     && cabextract -q --directory="$W_TMP" "$W_TMP"/vc_redist.x64.exe \
-    && find "$W_TMP" -maxdepth 1 -type f ! -name '*.exe' ! -name '*.dll' -exec sh -c \
-        'cabextract -q --directory="$1" "$2" 2>/dev/null || true' _ "$W_TMP" {} \; \
-    && cd "$W_TMP" \
-    && rename 's/_/\-/g' *.dll \
-    && cp "$W_TMP"/*.dll "$W_SYSTEM64_DLLS"/
+    && for f in "$W_TMP"/*; do cabextract -q --directory="$W_TMP" "$f" 2>/dev/null || true; done \
+    && for f in "$W_TMP"/*; do cabextract -q --directory="$W_TMP" "$f" 2>/dev/null || true; done \
+    && find "$W_TMP" -name '*.dll' -exec sh -c 'rename "s/_/-/g" "$@"' _ {} + \
+    && find "$W_TMP" -name '*.dll' -exec cp {} "$W_SYSTEM64_DLLS"/ \;
 
 # install pyinstaller
 RUN /usr/bin/pip install --no-cache-dir pyinstaller==$PYINSTALLER_VERSION
