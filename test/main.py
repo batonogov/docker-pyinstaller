@@ -3,6 +3,8 @@ import sys
 
 import numpy as np
 import pandas as pd
+import psutil
+import requests
 from flask import Flask, jsonify
 from flask_wtf.csrf import CSRFProtect
 from sqlalchemy import create_engine, text
@@ -36,6 +38,22 @@ def check_flask():
     print("Flask OK")
 
 
+def check_psutil():
+    cpu = psutil.cpu_count()
+    mem = psutil.virtual_memory()
+    assert cpu > 0, f"Unexpected cpu_count: {cpu}"
+    assert mem.total > 0, f"Unexpected virtual_memory total: {mem.total}"
+    print(f"psutil OK: {cpu} CPUs, {mem.total // (1024**2)} MB RAM")
+
+
+def check_requests():
+    session = requests.Session()
+    assert isinstance(session, requests.Session)
+    adapter = session.get_adapter("https://")
+    assert isinstance(adapter, requests.adapters.HTTPAdapter)
+    print("requests OK: Session created")
+
+
 def check_sqlalchemy():
     engine = create_engine("sqlite:///:memory:")
     with engine.connect() as connection:
@@ -50,6 +68,8 @@ def main():
     check_platform()
     check_numpy_pandas()
     check_flask()
+    check_psutil()
+    check_requests()
     check_sqlalchemy()
     print("All checks passed")
 

@@ -5,52 +5,106 @@ on:
     branches:
       - '*'
       - '!main'
+  pull_request:
+    branches:
+      - main
 
 jobs:
   windows:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v6.0.2
-      - name: Install Task
-        uses: arduino/setup-task@b91d5d2c96a56797b48ac1e0e89220bf64044611 # v2.0.0
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3.12.0
+
+      - name: Build Windows image
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6.19.2
         with:
-          version: 3.x
-      - name: Run Tests
-        run: task test:windows
+          context: .
+          file: Dockerfile-py3-windows
+          tags: pyinstaller-test-windows:latest
+          load: true
+          cache-from: type=gha,scope=windows
+          cache-to: type=gha,mode=max,scope=windows
+
+      - name: Build binary with PyInstaller
+        run: >
+          docker run --rm
+          -v "$(pwd)/test:/src/"
+          pyinstaller-test-windows:latest
+          "pyinstaller main.py --onefile"
+
+      - name: Verify Windows binary with Wine
+        run: >
+          docker run --rm
+          -v "$(pwd)/test:/src/"
+          pyinstaller-test-windows:latest
+          "wine C:/src/dist/main.exe"
 
   linux:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v6.0.2
-      - name: Install Task
-        uses: arduino/setup-task@b91d5d2c96a56797b48ac1e0e89220bf64044611 # v2.0.0
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3.12.0
+
+      - name: Build Linux image
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6.19.2
         with:
-          version: 3.x
-      - name: Run Tests
-        run: task test:linux
+          context: .
+          file: Dockerfile-py3-linux
+          tags: pyinstaller-test-linux:latest
+          load: true
+          cache-from: type=gha,scope=linux
+          cache-to: type=gha,mode=max,scope=linux
+
+      - name: Build binary with PyInstaller
+        run: >
+          docker run --rm
+          -v "$(pwd)/test:/src/"
+          pyinstaller-test-linux:latest
+          "pyinstaller main.py --onefile"
+
+      - name: Verify Linux binary
+        run: >
+          docker run --rm
+          -v "$(pwd)/test:/src/"
+          pyinstaller-test-linux:latest
+          ./dist/main
 
   linux-slim:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v6.0.2
-      - name: Install Task
-        uses: arduino/setup-task@b91d5d2c96a56797b48ac1e0e89220bf64044611 # v2.0.0
-        with:
-          version: 3.x
-      - name: Run Tests
-        run: task test:linux-slim
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-  # osx:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout Repo
-  #       uses: actions/checkout@v6.0.2
-  #     - name: Install Task
-  #       uses: arduino/setup-task@b91d5d2c96a56797b48ac1e0e89220bf64044611 # v2.0.0
-  #       with:
-  #         version: 3.x
-  #     - name: Run Tests
-  #       run: task test:osx
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3.12.0
+
+      - name: Build Linux slim image
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6.19.2
+        with:
+          context: .
+          file: Dockerfile-py3-linux-slim
+          tags: pyinstaller-test-linux-slim:latest
+          load: true
+          cache-from: type=gha,scope=linux-slim
+          cache-to: type=gha,mode=max,scope=linux-slim
+
+      - name: Build binary with PyInstaller
+        run: >
+          docker run --rm
+          -v "$(pwd)/test:/src/"
+          pyinstaller-test-linux-slim:latest
+          "pyinstaller main.py --onefile"
+
+      - name: Verify Linux slim binary
+        run: >
+          docker run --rm
+          -v "$(pwd)/test:/src/"
+          pyinstaller-test-linux-slim:latest
+          ./dist/main
