@@ -41,16 +41,16 @@ def check_flask():
 def check_psutil():
     cpu = psutil.cpu_count()
     mem = psutil.virtual_memory()
-    assert cpu is not None and cpu > 0, f"Unexpected cpu_count: {cpu}"
+    assert cpu > 0, f"Unexpected cpu_count: {cpu}"
     assert mem.total > 0, f"Unexpected virtual_memory total: {mem.total}"
     print(f"psutil OK: {cpu} CPUs, {mem.total // (1024**2)} MB RAM")
 
 
 def check_requests():
     session = requests.Session()
-    assert session is not None
+    assert isinstance(session, requests.Session)
     adapter = session.get_adapter("https://")
-    assert adapter is not None
+    assert isinstance(adapter, requests.adapters.HTTPAdapter)
     print("requests OK: Session created")
 
 
