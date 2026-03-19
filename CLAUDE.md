@@ -54,9 +54,10 @@ Python and PyInstaller versions are controlled via Dockerfile ARGs (`PYTHON_VERS
 ## CI/CD
 
 - **test.yml** — runs on PRs and non-main pushes; builds and tests all three platforms
-- **docker-image-linux.yml** — publishes to Docker Hub on tags (`v*.*.*`) and main; multi-arch (up to 8 architectures including riscv64)
-- **docker-image-windows.yml** — publishes Windows image to Docker Hub
-- **docker-image-linux-ghcr.yml** — publishes to ghcr.io with cosign signing
+- **release-please.yml** — runs on push to main; creates release PR with version bump and CHANGELOG
+- **docker-image-linux.yml** — publishes to Docker Hub on version tags (`v*.*.*`); multi-arch (up to 8 architectures including riscv64)
+- **docker-image-windows.yml** — publishes Windows image to Docker Hub on version tags
+- **docker-image-linux-ghcr.yml** — publishes to ghcr.io with cosign signing on version tags
 - **AUTO_PR.yml** — auto-creates PR from feature branches
 
 ## Code Quality
