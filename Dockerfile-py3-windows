@@ -70,15 +70,18 @@ RUN set -x \
 ENV W_DRIVE_C=/wine/drive_c
 ENV W_WINDIR_UNIX="$W_DRIVE_C/windows"
 ENV W_SYSTEM64_DLLS="$W_WINDIR_UNIX/system32"
-ENV W_TMP="$W_DRIVE_C/windows/temp/_$0"
+ENV W_TMP="$W_DRIVE_C/windows/temp/_vcredist"
 
 # install Microsoft Visual C++ Redistributable for Visual Studio 2015-2022 dll files
 RUN set -x \
     && rm -rf "$W_TMP" && mkdir -p "$W_TMP" \
     && wget -P "$W_TMP" https://aka.ms/vs/17/release/vc_redist.x64.exe \
     && cabextract -q --directory="$W_TMP" "$W_TMP"/vc_redist.x64.exe \
+    # extract nested cab archives from the redistributable
     && for f in "$W_TMP"/*; do cabextract -q --directory="$W_TMP" "$f" 2>/dev/null || true; done \
+    # second pass: extract DLLs from the inner cab files
     && for f in "$W_TMP"/*; do cabextract -q --directory="$W_TMP" "$f" 2>/dev/null || true; done \
+    && find "$W_TMP" -name '*.dll' | grep -q . || { echo "ERROR: no DLLs extracted from VC++ Redist"; exit 1; } \
     && find "$W_TMP" -name '*.dll' -exec sh -c 'rename "s/_/-/g" "$@"' _ {} + \
     && find "$W_TMP" -name '*.dll' -exec cp {} "$W_SYSTEM64_DLLS"/ \;
 
