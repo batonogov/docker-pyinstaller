@@ -2,6 +2,7 @@
   "packages": {
     ".": {
       "release-type": "simple",
+      "extra-files": [],
       "include-component-in-tag": false,
       "include-v-in-tag": true,
       "changelog-sections": [
