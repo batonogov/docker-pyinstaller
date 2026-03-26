@@ -3,5 +3,5 @@ Flask-WTF==1.2.2
 numpy==2.1.2
 pandas==2.2.3
 psutil==7.0.0
-requests==2.32.4
+requests==2.33.0
 sqlalchemy==2.0.36
