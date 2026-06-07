@@ -1,5 +1,14 @@
 # docker-pyinstaller
 
+> **This project is archived and no longer maintained.**
+>
+> This repository is now in read-only mode. I no longer use or maintain this project.
+> Feel free to fork it if you'd like to continue development.
+>
+> Thanks to everyone who contributed and used this project over the years!
+
+---
+
 ![GitHub stars](https://img.shields.io/github/stars/batonogov/docker-pyinstaller?style=flat-square)
 ![GitHub forks](https://img.shields.io/github/forks/batonogov/docker-pyinstaller?style=flat-square)
 ![GitHub issues](https://img.shields.io/github/issues/batonogov/docker-pyinstaller?style=flat-square)
